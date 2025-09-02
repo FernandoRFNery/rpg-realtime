@@ -1,0 +1,21 @@
+name: Deploy to mini-pc
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, mini-pc]   # rótulos do teu runner
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build app image (prod)
+        run: |
+          docker build -t rpg-realtime:latest
+
+      - name: Restart app with new image
+        run: |
+          docker compose -f /opt/reverse-proxy/docker-compose.yml up -d app
+          docker image prune -f
