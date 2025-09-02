@@ -1,0 +1,31 @@
+cd /opt/site
+
+cat > .gitignore <<'EOF'
+# Node
+node_modules/
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
+
+# Env/segredos
+.env
+.env.*
+
+# Dados persistentes (não versionar!)
+data/
+uploads/
+backups/
+campaign.db*
+*.sqlite
+*.db*
+*.db-*
+
+# Sistema/editor
+.DS_Store
+.idea/
+.vscode/
+
+# Builds
+dist/
+build/
+EOF
