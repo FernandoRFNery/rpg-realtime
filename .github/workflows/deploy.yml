@@ -13,7 +13,7 @@ jobs:
 
       - name: Build app image (prod)
         run: |
-          docker build -t rpg-realtime:latest
+          docker build -t rpg-realtime:latest .
 
       - name: Restart app with new image
         run: |
