@@ -1,0 +1,201 @@
+diff --git a/public/index.html b/public/index.html
+--- a/public/index.html
++++ b/public/index.html
+@@ -1,12 +1,24 @@
+   <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <title>RPG Realtime</title>
++    <style>
++      /* micro-transição opcional para suavizar atualizações */
++      @media (prefers-reduced-motion: no-preference){
++        table tbody, ul, ol {
++          transition: opacity 120ms ease;
++        }
++        .updating { opacity: .96; }
++        tr.bloodied td { font-weight: 600; }
++      }
++    </style>
+   </head>
+   <body>
+@@
+-    <!-- seus scripts atuais -->
++    <!-- reconciliador incremental (novo) -->
++    <script src="./render-incremental.js"></script>
++    <!-- seus scripts atuais -->
+@@
+-    <script>
+-      // ... aqui provavelmente já existe window.applyState ou lógica similar
+-    </script>
++    <script>
++      // Patch não-invasivo: se já existir applyState, embrulha com versão incremental.
++      (function(){
++        if (typeof window.applyState !== 'function') return; // nada a fazer
++        const originalApplyState = window.applyState;
++
++        // util pra não piscar quando atualiza várias áreas de uma vez
++        function withUpdating(el, fn){
++          el?.classList?.add('updating');
++          try { fn(); } finally {
++            setTimeout(()=> el?.classList?.remove('updating'), 120);
++          }
++        }
++
++        // Guarda um hash leve pra evitar trabalho desnecessário
++        const __prevHash = { };
++        window.applyState = function(next){
++          try{
++            const hash = {
++              monsters: next?.monsters?.length ?? 0,
++              party:    next?.party?.length    ?? 0,
++              notes:    next?.notes?.length    ?? 0,
++              updatedAt: next?.updatedAt ?? 0
++            };
++            if (JSON.stringify(hash) === JSON.stringify(__prevHash)) {
++              // deixa o original decidir pequenos ajustes
++              return originalApplyState(next);
++            }
++            Object.assign(__prevHash, hash);
++
++            const tbMonsters = document.querySelector('#monsters tbody');
++            const tbParty    = document.querySelector('#party tbody');
++            const ulNotes    = document.querySelector('#notes');
++
++            scheduleRender(() => withUpdating(document.body, () => {
++              // MONSTERS (tabela)
++              if (tbMonsters && Array.isArray(next?.monsters)) {
++                reconcileList(
++                  tbMonsters,
++                  next.monsters,
++                  (m) => m.id ?? m.name ?? String(Math.random()),
++                  (m, tr) => {
++                    if (!tr){
++                      tr = document.createElement('tr');
++                      tr.innerHTML = `
++                        <td class="name"></td>
++                        <td class="hp"></td>
++                        <td class="status"></td>
++                      `;
++                    }
++                    const nameEl = tr.querySelector('.name');
++                    const hpEl   = tr.querySelector('.hp');
++                    const stEl   = tr.querySelector('.status');
++                    if (nameEl && nameEl.textContent !== (m.name ?? '')) nameEl.textContent = m.name ?? '';
++                    const hpTxt = (m.maxHp != null) ? \`\${m.hp}/\${m.maxHp}\` : String(m.hp ?? '');
++                    if (hpEl && hpEl.textContent !== hpTxt) hpEl.textContent = hpTxt;
++                    if (stEl && stEl.textContent !== (m.status ?? '')) stEl.textContent = m.status ?? '';
++                    if (m.hp != null && m.maxHp != null) {
++                      tr.classList.toggle('bloodied', (m.maxHp > 0) && (m.hp/m.maxHp) <= 0.5);
++                    }
++                    return tr;
++                  }
++                );
++              }
++
++              // PARTY (tabela)
++              if (tbParty && Array.isArray(next?.party)) {
++                reconcileList(
++                  tbParty,
++                  next.party,
++                  (p) => p.id ?? p.name ?? String(Math.random()),
++                  (p, tr) => {
++                    if (!tr){
++                      tr = document.createElement('tr');
++                      tr.innerHTML = `
++                        <td class="name"></td>
++                        <td class="ac"></td>
++                        <td class="hp"></td>
++                      `;
++                    }
++                    const name = tr.querySelector('.name');
++                    const ac   = tr.querySelector('.ac');
++                    const hp   = tr.querySelector('.hp');
++                    if (name && name.textContent !== (p.name ?? '')) name.textContent = p.name ?? '';
++                    if (ac && ac.textContent !== String(p.ac ?? '')) ac.textContent = String(p.ac ?? '');
++                    const hpTxt = (p.maxHp != null) ? \`\${p.hp}/\${p.maxHp}\` : String(p.hp ?? '');
++                    if (hp && hp.textContent !== hpTxt) hp.textContent = hpTxt;
++                    return tr;
++                  }
++                );
++              }
++
++              // NOTES (lista <ul id="notes">)
++              if (ulNotes && Array.isArray(next?.notes)) {
++                reconcileList(
++                  ulNotes,
++                  next.notes,
++                  (n) => n.id ?? n.createdAt ?? (n.text ? n.text.slice(0,30) : String(Math.random())),
++                  (n, li) => {
++                    if (!li){ li = document.createElement('li'); li.className = 'note'; }
++                    const txt = n.text ?? '';
++                    if (li.textContent !== txt) li.textContent = txt;
++                    return li;
++                  }
++                );
++              }
++            }));
++          } finally {
++            // Deixa a função original cuidar do restante (se houver UI fora das seções acima)
++            try { originalApplyState(next); } catch (_) {}
++          }
++        };
++      })();
++    </script>
+   </body>
+ </html>
+diff --git a/public/render-incremental.js b/public/render-incremental.js
+new file mode 100644
+--- /dev/null
++++ b/public/render-incremental.js
+@@ -0,0 +1,66 @@
++// Reconciliação incremental para listas/tabelas
++// Uso:
++//   reconcileList(container, items, getKey, render)
++//   scheduleRender(fn)
++// Mantém nós existentes, evita "piscar" ao atualizar.
++
++(function (global){
++  const g = global || window;
++
++  function reconcileList(container, nextItems, getKey, render){
++    if (!container) return;
++    const map = new Map();
++    Array.from(container.children).forEach(el => {
++      const k = el.getAttribute('data-key');
++      if (k) map.set(k, el);
++    });
++
++    const frag = document.createDocumentFragment();
++
++    for (const item of (nextItems || [])){
++      const key = String(getKey(item));
++      let el = map.get(key);
++      el = render(item, el) || el;
++      if (!el) continue;
++      el.setAttribute('data-key', key);
++      frag.appendChild(el);
++      map.delete(key); // não é órfão
++    }
++
++    // remove órfãos
++    for (const [, el] of map) el.remove();
++
++    // reordena apenas se necessário
++    if (!container.firstChild || container.firstChild !== frag.firstChild) {
++      container.appendChild(frag);
++    }
++  }
++
++  let rafScheduled = false;
++  function scheduleRender(fn){
++    if (rafScheduled) return;
++    rafScheduled = true;
++    requestAnimationFrame(() => {
++      try { fn && fn(); } finally { rafScheduled = false; }
++    });
++  }
++
++  // exporta em escopo global
++  g.reconcileList = reconcileList;
++  g.scheduleRender = scheduleRender;
++})(typeof window !== 'undefined' ? window : this);
