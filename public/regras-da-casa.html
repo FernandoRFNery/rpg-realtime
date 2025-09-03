@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Regras da Campanha Tico Duro - D&D 5e</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg-grad: linear-gradient(135deg, #0d1421 0%, #1a1b3a 50%, #2d1b69 100%);
+  --text:#f1f5f9; --text-muted:#94a3b8;
+  --panel: rgba(30, 41, 59, 0.95);
+  --glass: rgba(255,255,255,.05); --glass-border: rgba(255,255,255,.12);
+  --accent:#fbbf24; --accent-2:#d946ef; --grid: rgba(148,163,184,.2);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;min-height:100vh;background:var(--bg-grad);color:var(--text);font-family:'Crimson Text',serif}
+header{position:sticky;top:0;z-index:5;background:rgba(13,20,33,.85);backdrop-filter:blur(12px);border-bottom:2px solid var(--accent)}
+header .wrap{max-width:1280px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:12px}
+h1{margin:0;font-family:'Cinzel',serif;font-weight:700;font-size:22px;background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+main{max-width:1280px;margin:0 auto;padding:24px;display:grid;grid-template-columns:300px 1fr;gap:28px}
+@media (max-width: 1100px){ main{grid-template-columns:1fr;} nav#toc{position:relative; top:auto;} }
+nav#toc{position:sticky;top:100px;align-self:start;background:var(--glass);border:1px solid var(--glass-border);border-radius:18px;padding:18px}
+#toc h3{margin:0 0 10px;font-family:'Cinzel',serif;color:var(--accent);text-align:center}
+#toc a{display:flex;gap:8px;align-items:center;color:var(--text);text-decoration:none;padding:8px 10px;margin:6px 0;border-radius:12px;border:1px solid transparent}
+#toc a:hover{background:rgba(255,255,255,.06);border-color:var(--accent);transform:translateX(3px)}
+section.block{background:var(--glass);border:1px solid var(--glass-border);border-radius:18px;overflow:hidden}
+details.section>summary{list-style:none;cursor:pointer;background:linear-gradient(135deg,rgba(251,191,36,.12),rgba(217,70,239,.12));padding:16px 18px;border-bottom:1px solid var(--grid)}
+details.section>summary h2{margin:0;font-family:'Cinzel',serif;font-size:20px;color:var(--accent);display:flex;align-items:center;gap:10px}
+.details-body{padding:14px 18px}
+.table-wrap{overflow:auto}
+table.grid{width:100%;border-collapse:collapse}
+table.grid th, table.grid td{border-bottom:1px solid var(--grid);padding:10px 12px;vertical-align:top}
+table.grid thead th{position:sticky;top:0;background:rgba(13,20,33,.95);font-family:'Cinzel',serif;font-weight:600;color:var(--accent);text-transform:uppercase;border-bottom:2px solid var(--accent)}
+ul.rules{margin:0;padding:0 0 0 1rem}
+ul.rules li{margin:8px 0}
+.small{font-size:.95rem;color:var(--text-muted)}
+blockquote.note{margin:10px 0;padding:10px 12px;border-left:4px solid var(--accent);background:rgba(0,0,0,.12);border-radius:8px}
+kbd{background:#111;border:1px solid #333;border-bottom-color:#111;border-radius:6px;padding:2px 6px;font-family:ui-monospace,monospace}
+hr.sep{border:0;border-top:1px dashed var(--grid);margin:16px 0}
+
+/* === Anti-flash (fundo sólido + gradiente fixo) — igual à index === */
+html, body { background:#0b1220; } /* base 100% opaca para evitar "flash" claro */
+body::after{
+  content:"";
+  position:fixed; inset:0; z-index:-2; pointer-events:none;
+  background: var(--bg-grad); /* gradiente fica numa camada fixa */
+}
+
+
+/* Toolbar e botões — igual ao estilo da index */
+.h-spacer{flex:1}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap}
+.btn{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.1);
+  color:var(--text);
+  border-radius:12px;
+  padding:10px 14px;
+  cursor:pointer;
+  font-family:'Cinzel',serif;
+  font-weight:600;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+}
+.btn:hover{transform:translateY(-1px);box-shadow:0 4px 6px -1px rgba(0,0,0,.3)}
+
+
+/* Breadcrumb discreto */
+.breadcrumb{
+  display:inline-flex; align-items:center; gap:8px;
+  margin-left:12px; padding:6px 10px;
+  border:1px solid rgba(255,255,255,.1); border-radius:10px;
+  background:rgba(0,0,0,.18);
+  font-family:'Cinzel',serif; font-weight:600; font-size:14px;
+}
+.breadcrumb a{ color:var(--text); text-decoration:none; opacity:.9 }
+.breadcrumb a:hover{ opacity:1 }
+.breadcrumb .sep{ opacity:.5 }
+
+
+:root{
+  --container-max: 1680px;
+  --toc-w: 320px;
+  --container-gap: 36px;
+}
+header .wrap{ max-width: var(--container-max); }
+main{
+  max-width: var(--container-max);
+  grid-template-columns: var(--toc-w) 1fr;
+  gap: var(--container-gap);
+}
+
+header .toolbar a{ text-decoration:none; font-family:'Cinzel',serif; font-weight:600; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1><i class="fa-solid fa-dragon"></i> Regras da Campanha Tico Duro - D&D 5e</h1><span class="breadcrumb"><a href="index.html">Guia da Campanha</a> <span class="sep">›</span> <span>Regras da Casa</span></span>
+    
+<div class="h-spacer"></div>
+<div class="toolbar">
+  <a class="btn" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
+</div>
+
+    <a href="#topo" class="small">v1</a>
+  </div>
+</header>
+
+<main>
+  <nav id="toc">
+    <h3><i class="fa-solid fa-scroll"></i> Seções</h3>
+    <a href="#falhas"><i class="fa-solid fa-skull-crossbones"></i> Falhas Críticas</a>
+    <a href="#cardiaco"><i class="fa-solid fa-heart-pulse"></i> Ataque Cardíaco (d20=13)</a>
+    <a href="#lore"><i class="fa-solid fa-book"></i> O que o personagem sabe?</a>
+    <a href="#inspiracao"><i class="fa-solid fa-star"></i> Inspiração por sessão</a>
+    <a href="#vantagem"><i class="fa-solid fa-dice-d20"></i> Rolagens com vantagem</a>
+    <a href="#combate-acoes"><i class="fa-solid fa-person-running"></i> Pular, Empurrar & Poção</a>
+    <a href="#critico-max"><i class="fa-solid fa-burst"></i> Crítico Maximizado</a>
+    <a href="#limit-break"><i class="fa-solid fa-fire-flame-curved"></i> Limit Break</a>
+    <a href="#dados-explosivos"><i class="fa-solid fa-bomb"></i> Dados de dano explosivos</a>
+    <a href="#locational"><i class="fa-solid fa-crosshairs"></i> Tabela de Acerto por Local</a>
+  </nav>
+
+  <div>
+    <!-- Falhas Críticas -->
+    <section class="block" id="falhas">
+      <details class="section" open>
+        <summary><h2><i class="fa-solid fa-skull-crossbones"></i> Regras das Falhas “Críticas”</h2></summary>
+        <div class="details-body">
+          <p>Se o <strong>d20</strong> rolar <strong>1</strong> em uma jogada de ataque, o ataque erra o alvo automaticamente. Para determinar a consequência, role um <strong>d20</strong> natural novamente e consulte a tabela abaixo.</p>
+          <div class="table-wrap">
+            <table class="grid">
+              <thead><tr><th>d20</th><th>Resultado</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td><em>Perigosamente exposto.</em> O alvo que você atacou pode usar a reação para fazer um ataque contra você com vantagem, ou usar metade do deslocamento para afastar‑se de você sem provocar ataque de oportunidade.</td></tr>
+                <tr><td>2–3</td><td><strong>Perdeu a pegada.</strong> Sua arma equipada escapa das mãos em direção aleatória, parando a 15 ft. de distância.</td></tr>
+                <tr><td>4–5</td><td><strong>Passos desengonçados.</strong> Sua velocidade é reduzida a 0 até o início do próximo turno. Se já tiver se movido neste turno, você cai <em>prone</em>.</td></tr>
+                <tr><td>6–7</td><td><strong>Deflexão retumbante.</strong> Você terá desvantagem na próxima jogada de ataque.</td></tr>
+                <tr><td>8–9</td><td><strong>Foco interrompido.</strong> Você não pode usar reações até seu próximo turno.</td></tr>
+                <tr><td>10–11</td><td><strong>Pego de surpresa.</strong> A próxima jogada de ataque feita contra você será feita com vantagem.</td></tr>
+                <tr><td>12–17</td><td><strong>Mira ruim.</strong> O ataque simplesmente erra sem nenhuma consequência.</td></tr>
+                <tr><td>18–19</td><td><strong>Impulso transferido.</strong> Seu ataque erra, mas você ganha vantagem na próxima rolagem de ataque.</td></tr>
+                <tr><td>20</td><td><strong>Reversão notável.</strong> Ao invés de errar o ataque, você o acerta.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- Ataque Cardíaco -->
+    <section class="block" id="cardiaco">
+      <details class="section" open>
+        <summary><h2><i class="fa-solid fa-heart-pulse"></i> Dado de Ataque Cardíaco</h2></summary>
+        <div class="details-body">
+          <ul class="rules">
+            <li>Ao rolar <strong>13 natural</strong> no d20 (mesmo com modificadores), role o d20 novamente.</li>
+            <li>Se tirar <strong>13</strong> natural <strong>três vezes consecutivas</strong>, o personagem sofre um ataque cardíaco fulminante e cai <strong>inconsciente com 0 PV</strong>.</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <!-- O que o personagem sabe -->
+    <section class="block" id="lore">
+      <details class="section" open>
+        <summary><h2><i class="fa-solid fa-book"></i> O que o personagem sabe?</h2></summary>
+        <div class="details-body">
+          <p>Quando os personagens se depararem com uma situação de conhecimento incerto, o jogador pode rolar um <strong>d6</strong>:</p>
+          <ul class="rules">
+            <li>1–2: não sabe nada;</li>
+            <li>3–4: sabe alguma coisa;</li>
+            <li>5–6: domina o assunto em questão.</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <!-- Inspiração -->
+    <section class="block" id="inspiracao">
+      <details class="section" open>
+        <summary><h2><i class="fa-solid fa-star"></i> Ponto de Inspiração por Sessão</h2></summary>
+        <div class="details-body">
+          <ul class="rules">
+            <li>No início de cada sessão, cada personagem ganha <strong>1 ponto de inspiração</strong>. O ponto <em>não acumula</em> entre sessões.</li>
+            <li>Se o ponto tiver sido usado e a sessão terminar durante um combate, um novo ponto é ativado somente após o combate terminar.</li>
+            <li>Se o ponto não tiver sido utilizado e a sessão acabar durante o combate, ele permanece ativo, mas o personagem não ganhará outro ao fim do combate (para não exceder 1 ponto por personagem).</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <!-- Vantagem -->
+    <section class="block" id="vantagem">
+      <details class="section" open>
+        <summary><h2><i class="fa-solid fa-dice-d20"></i> Rolagens com vantagem</h2></summary>
+        <div class="details-body">
+          <ul class="rules">
+            <li>Se o jogador interpretar muito bem o personagem em uma cena, o mestre pode considerar acerto automático ou solicitar a rolagem <strong>com vantagem</strong>.</li>
+            <li>Se o jogador perguntar antes, segue‑se o procedimento normal (com ou sem vantagem), a menos que a situação seja claramente propícia a vantagem (buffs, auxílio do grupo, conhecimento do personagem, etc.).</li>
+          </ul>
+          <blockquote class="note small"><strong>Obs.:</strong> Estes mesmos critérios podem ser aplicados <em>inversamente</em> para impor <strong>desvantagem</strong>.</blockquote>
+        </div>
+      </details>
+    </section>
+
+    <!-- Ações em combate -->
+    <section class="block" id="combate-acoes">
+      <details class="section" open>
+        <summary><h2><i class="fa-solid fa-person-running"></i> Pular, Empurrar e Beber Poção de Vida (em combate)</h2></summary>
+        <div class="details-body">
+          <ul class="rules">
+            <li><strong>Poção de Vida:</strong> Pode ser bebida como <em>ação bônus</em>. Você pode, no mesmo turno, beber duas poções se usar uma ação bônus e uma ação (somente poções de vida na ação bônus). Na ação normal, qualquer poção do inventário; na ação bônus, apenas poção de vida. Arremessar uma poção em um aliado ou fazê‑lo beber exige ação; despejar sobre alguém pode ser ação bônus (acerto definido por rolagem de d20).</li>
+            <li><strong>Empurrão:</strong> Como ação bônus, faça um teste <strong>oposto</strong>: seu <em>STR/DEX + mod, ou Athletics</em> vs. <em>Save STR/DEX + mod, ou Athletics/Acrobatics</em> do alvo. Se vencer, o alvo é <strong>arremessado 10 ft.</strong> na sua direção de escolha. Em <em>falha crítica (1)</em>, você é arremessado e cai <em>prone</em> (metade do deslocamento no próximo turno). Em <em>acerto crítico (20)</em> o alvo cai <em>prone</em>.</li>
+            <li><strong>Pulo:</strong> Como ação bônus, você pode saltar gastando <strong>todo</strong> o seu deslocamento do turno para atingir áreas mais altas, sem usar uma ação para Athletics. O salto usa até 30 ft do deslocamento, porém se usados somente 10/15/20/25 ft considera‑se o deslocamento zerado mesmo assim (o “ato de pular” consome o turno). Pode ser usado dentro ou fora de combate.</li>
+          </ul>
+          <blockquote class="note small"><strong>Obs.:</strong> Poções de vida <em>fora</em> do combate curam o valor máximo do dado; em combate, rola‑se normalmente.</blockquote>
+        </div>
+      </details>
+    </section>
+
+    <!-- Crítico maximizado -->
+    <section class="block" id="critico-max">
+      <details class="section" open>
+        <summary><h2><i class="fa-solid fa-burst"></i> Crítico Maximizado</h2></summary>
+        <div class="details-body">
+          <p>No acerto crítico (20 no d20), você rola o <strong>dano base em dobro</strong>. Para reduzir resultados frustrantes, o <strong>dado extra</strong> do crítico é <strong>maximizado</strong> automaticamente; você rola somente o dado “normal”.</p>
+          <ul class="rules">
+            <li><strong>Exemplo:</strong> dano base 1d10+4.<br/>
+            Crítico padrão: 2d10+4 = 6 ~ 24.<br/>
+            <strong>Crítico maximizado:</strong> 1d10 + <u>10</u> + 4 = <strong>15 ~ 24</strong>.</li>
+            <li>Para 1d12, use 1d12 + <u>12</u>; para 2d6, some 1d6 + <u>6</u>, etc.</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <!-- Limit Break -->
+    <section class="block" id="limit-break">
+      <details class="section" open>
+        <summary><h2><i class="fa-solid fa-fire-flame-curved"></i> Limit Break (super ataque)</h2></summary>
+        <div class="details-body">
+          <h3>Enchendo a barra</h3>
+          <ul class="rules">
+            <li>Marque <strong>20 “slots”</strong> de Limit Break até encher a barra.</li>
+            <li>Cada <strong>acerto crítico</strong> em combate (20 no d20) preenche 1 slot. Ao atingir 20 críticos (acumulados ao longo das sessões), a barra fica cheia.</li>
+          </ul>
+          <h3>Gastando a barra</h3>
+          <ul class="rules">
+            <li>Usar o Limit Break consome <strong>todo seu deslocamento</strong> + <strong>sua ação</strong> + <strong>sua ação bônus</strong> (você gasta a rodada).</li>
+            <li>Você precisa começar a até <strong>30 ft</strong> do alvo. Ao ativar, você se move automaticamente até <strong>30 ft</strong> (ou menos) para alcançar o alvo. Se estiver mais longe que 30 ft, não pode usar.</li>
+            <li>Não pode ter usado nenhuma ação/ação bônus na rodada antes de ativar.</li>
+            <li>Faça uma jogada de ataque com <strong>vantagem</strong>. Se errar, você perde apenas <strong>1 slot</strong> (dos 20) ao invés de toda a barra.</li>
+          </ul>
+          <h3>Dano do Limit Break</h3>
+          <ul class="rules">
+            <li>Dano fixo baseado no <strong>dano da arma principal</strong> × <strong>4</strong> (não rola dados do ×4).</li>
+            <li><strong>Exemplo:</strong> arma 1d10+4 ⇒ LB = (10×4)+4 = <strong>44</strong>.</li>
+          </ul>
+          <blockquote class="note small"><strong>Obs.:</strong> Se houver crítico no ataque que lança o Limit Break, o ×4 não é dobrado. Você pode optar por: (a) usar o crítico para lançar o LB; ou (b) aplicar o crítico maximizado agora e guardar o LB para a próxima rodada.</blockquote>
+        </div>
+      </details>
+    </section>
+
+    <!-- Dados Explosivos -->
+    <section class="block" id="dados-explosivos">
+      <details class="section" open>
+        <summary><h2><i class="fa-solid fa-bomb"></i> Dados de Danos Explosivos</h2></summary>
+        <div class="details-body">
+          <p>Ao rolar o dano de uma arma, <strong>se qualquer dado mostrar o seu valor máximo</strong>, role mais <em>1 dado do mesmo tipo</em> e some ao dano final (sem modificadores).</p>
+          <ul class="rules">
+            <li><strong>Exemplo 1:</strong> 1d6+3 ⇒ se sair 6, role +1d6 natural e some: <em>1d6+3 + 1d6</em>.</li>
+            <li><strong>Exemplo 2:</strong> 2d6+3 ⇒ se um dos d6 sair 6, role +1d6 natural e some.</li>
+            <li><strong>Exemplo 3:</strong> 2d6+3 ⇒ se <em>ambos</em> forem 6, role +1d6 natural; se este novo d6 também sair 6, role novamente (+1d6), e assim por diante.</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <!-- Locational Hit Table -->
+    <section class="block" id="locational">
+      <details class="section" open>
+        <summary><h2><i class="fa-solid fa-crosshairs"></i> Tabela de Acerto por Localização (d100)</h2></summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table class="grid">
+              <thead><tr><th>d100</th><th>Local</th><th>Efeito especial (após dois acertos consecutivos)</th></tr></thead>
+              <tbody>
+                <tr><td>01–10</td><td>Perna esquerda</td><td>Cai <em>prone</em> e gasta metade do movimento para levantar. Velocidade reduzida pela duração do combate.</td></tr>
+                <tr><td>11–20</td><td>Perna direita</td><td>Como acima, e testes de Destreza com desvantagem até tratado.</td></tr>
+                <tr><td>21–40</td><td>Tórax</td><td>No próximo acerto, sofre +1d6 de dano e perde a reação até o fim do próximo turno.</td></tr>
+                <tr><td>41–60</td><td>Abdômen</td><td>Passa a sangrar: -1 PV no início de cada turno até passar em Medicina CD 10 ou receber cura mágica.</td></tr>
+                <tr><td>61–70</td><td>Ombro esquerdo</td><td>Não pode empunhar armas de duas mãos; testes de Atletismo com desvantagem.</td></tr>
+                <tr><td>71–80</td><td>Ombro direito</td><td>Como acima; se estiver usando escudo, derruba‑o imediatamente.</td></tr>
+                <tr><td>81–90</td><td>Pescoço</td><td>CD 15 de Constituição ou fica atordoado até o fim do próximo turno e perde a reação.</td></tr>
+                <tr><td>91–100</td><td>Cabeça</td><td>Desvantagem em testes de Percepção e Inteligência pelo restante do combate.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+    </section>
+  </div>
+</main>
+</body>
+</html>

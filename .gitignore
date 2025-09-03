@@ -1,0 +1,13 @@
+node_modules/
+.env*
+data/
+uploads/
+backup/
+backups/
+campaign.db*
+*.sqlite
+*.db*
+*.db-*
+.DS_Store
+dist/
+build/

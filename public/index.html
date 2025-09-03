@@ -1,0 +1,2858 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <!-- Favicon padrão -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+<!-- Apple / iOS -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<!-- PWA / Android -->
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0d1421">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guia da Campanha D&D 5e — Realtime (v6.4)</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-grad: linear-gradient(135deg, #0d1421 0%, #1a1b3a 50%, #2d1b69 100%);
+      --bg-solid: #0d1421;
+      --panel: rgba(30, 41, 59, 0.95);
+      --panel-2: rgba(15, 23, 42, 0.9);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #fbbf24;
+      --accent-2: #d946ef;
+      --grid: rgba(148, 163, 184, 0.2);
+      --success: #10b981; --warning: #f59e0b; --danger: #ef4444; --info: #3b82f6;
+      --glass: rgba(255,255,255,.05); --glass-border: rgba(255,255,255,.1);
+      --shadow: 0 25px 50px -12px rgba(0,0,0,.5); --shadow-sm: 0 4px 6px -1px rgba(0,0,0,.3);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;min-height:100vh;background:var(--bg-grad);color:var(--text);font-family:'Crimson Text', serif;font-size:16px;line-height:1.6}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;z-index:-1}
+    header{position:sticky;top:0;z-index:100;backdrop-filter:blur(20px) saturate(180%);background:rgba(13,20,33,.8);border-bottom:2px solid var(--accent);box-shadow:var(--shadow)}
+    header .wrap{max-width:1400px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;gap:16px}
+    h1{margin:0;font-family:'Cinzel',serif;font-size:24px;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .h-spacer{flex:1}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-border);color:var(--text);border-radius:12px;padding:10px 14px;cursor:pointer;font-family:'Cinzel',serif;font-weight:600;display:flex;align-items:center;gap:8px}
+    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),#f59e0b);color:#000;border:none}
+    .btn.danger{background:linear-gradient(135deg,var(--danger),#dc2626);color:#fff;border:none}
+    .btn.active{background:var(--accent);color:#000}
+    main{max-width:1400px;margin:0 auto;padding:32px 24px 80px;display:grid;grid-template-columns:300px 1fr;gap:32px}
+    nav#toc{position:sticky;top:120px;align-self:start;background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:20px;padding:20px;box-shadow:var(--shadow)}
+    #toc h3{margin:0 0 12px;font-family:'Cinzel',serif;color:var(--accent);text-align:center}
+    #toc a{display:flex;align-items:center;gap:10px;padding:10px 12px;margin:8px 0;border-radius:12px;color:var(--text);text-decoration:none;border:1px solid transparent}
+    #toc a:hover{background:var(--glass);border-color:var(--accent);transform:translateX(4px)}
+    .quick-stats,.dice-roller,.party-tracker,.notes{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-border);border-radius:16px;padding:16px;margin-top:18px}
+    .quick-stats h4,.dice-roller h4,.party-tracker h4,.notes h3{margin:0 0 10px;font-family:'Cinzel',serif;color:var(--accent);text-align:center}
+    .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:center}
+    .stat-item{background:rgba(0,0,0,.2);padding:8px;border-radius:10px;border:1px solid var(--grid)}
+    .stat-number{font-weight:700;color:var(--accent)}
+    section.block{background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:20px;margin-bottom:24px;overflow:hidden;box-shadow:var(--shadow)}
+    details.section>summary{list-style:none;cursor:pointer;background:linear-gradient(135deg,rgba(251,191,36,.12),rgba(217,70,239,.12));padding:18px 20px;border-bottom:1px solid var(--grid)}
+    details.section>summary h2{margin:0;display:inline-flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:20px;color:var(--accent)}
+    details.section[open]>summary{background:linear-gradient(135deg,rgba(251,191,36,.15),rgba(217,70,239,.15))}
+    .controls{display:flex;gap:10px;padding:12px 16px;border-bottom:1px dashed var(--grid);flex-wrap:wrap;background:rgba(0,0,0,.1);align-items:center}
+    .controls input[type="search"]{flex:1;min-width:200px;background:rgba(0,0,0,.2);color:var(--text);border:1px solid var(--grid);border-radius:12px;padding:10px 14px}
+    .controls .btn.small{padding:8px 12px;border-radius:10px;font-size:14px}
+    .table-wrap{overflow:auto;max-height:600px}
+    table.grid{width:100%;border-collapse:collapse;min-width:820px}
+    table.grid th,table.grid td{border-bottom:1px solid var(--grid);padding:12px 14px;vertical-align:top}
+    table.grid thead th{position:sticky;top:0;background:rgba(13,20,33,.95);backdrop-filter:blur(10px);z-index:10;cursor:pointer;font-family:'Cinzel',serif;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--accent)}
+    table.grid tbody tr:hover{background:rgba(251,191,36,.05)}
+    th.sort-asc::after{content:" ▲";color:var(--accent)} th.sort-desc::after{content:" ▼";color:var(--accent)}
+    td.actions,th.actions{width:180px;text-align:center}
+    .row-actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+    .row-actions .btn{padding:6px 10px;border-radius:8px;font-size:12px}
+    .tag{padding:4px 8px;border-radius:8px;font-size:12px;font-weight:700;display:inline-block;text-transform:uppercase;letter-spacing:.4px}
+    .yes{background:var(--success);color:#fff}.maybe{background:var(--warning);color:#000}.no{background:var(--danger);color:#fff}
+    ul.bullets{margin:0;padding:16px 24px}
+    ul.bullets li{margin:10px 0;display:flex;gap:14px;align-items:flex-start;background:rgba(0,0,0,.1);padding:12px 14px;border-radius:12px;border-left:4px solid var(--accent)}
+    ul.bullets .text{flex:1}
+    .inline-form{display:none;gap:10px;flex-wrap:wrap;padding:16px 18px;border-top:1px dashed var(--grid);background:rgba(0,0,0,.1)}
+    .inline-form input,.inline-form textarea,.inline-form select{background:rgba(0,0,0,.2);color:var(--text);border:1px solid var(--grid);border-radius:10px;padding:10px 12px}
+    .inline-form textarea{min-height:80px;flex-basis:100%;resize:vertical}
+    .snackbar{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;background:rgba(0,0,0,.9);color:#fff;padding:12px 18px;border-radius:12px;display:none;gap:12px;align-items:center;box-shadow:var(--shadow);border:1px solid var(--accent)}
+    @media(max-width:1200px){main{grid-template-columns:1fr}nav#toc{position:relative;top:auto}}
+    @media print{header,nav#toc,.controls,.btn,.inline-form,.snackbar,.notes,.dice-roller,.party-tracker{display:none}main{grid-template-columns:1fr}section.block{box-shadow:none;break-inside:avoid}}
+  /* --- Party tracker --- */
+.party-tracker .party-member{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  padding:6px 8px;
+  border-radius:10px;
+}
+
+.party-tracker .level-wrap{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:var(--text-muted);
+  font-weight:600;
+}
+
+.party-tracker .member-level[contenteditable="true"]{
+  min-width:32px;
+  text-align:center;
+  color:var(--text);
+  background:rgba(0,0,0,.2);
+  border:1px solid var(--glass-border);
+  border-radius:8px;
+  padding:2px 10px;
+  outline:none;
+}
+.party-tracker .member-level[contenteditable="true"]:empty::before{
+  content:'?';
+  color:var(--text-muted);
+}
+/* --- FIX: tabelas estáveis e header alinhado --- */
+.table-wrap{
+  overflow: auto;
+  max-height: 600px;
+  /* reserva o espaço do scrollbar para evitar “salto” de largura */
+  scrollbar-gutter: stable both-edges;
+  /* usado como fallback via JS */
+  --sbw: 0px;
+}
+
+/* largura fixada para manter as colunas alinhadas */
+table.grid{
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* quebra de linha adequada em células longas */
+table.grid th, table.grid td{
+  word-break: break-word;
+}
+
+/* fallback para browsers sem suporte a `scrollbar-gutter`:
+   adiciona o “gutter” no header para bater com o body */
+.table-wrap thead th:last-child{
+  padding-right: var(--sbw);
+}
+/* --- PATCH: Notes não extrapola o card --- */
+.notes{
+  overflow: hidden;                 /* se algo tentar sair, corta */
+}
+
+.notes textarea#quickNotes{
+  width: 100%;                      /* ocupa o card, sem passar */
+  max-width: 100%;                  /* impede resize horizontal além do card */
+  min-height: 140px;                /* ajuste livre */
+  resize: vertical;                 /* permite só altura */
+  display: block;
+  box-sizing: border-box;
+  background: rgba(0,0,0,.2);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  color: var(--text);
+  padding: 10px 12px;
+  outline: none;
+}
+/* ===== LIGHT THEME TWEAKS — v2 (um pouco mais escuro) ===== */
+
+/* 1) Barra do topo (header) mais fechada no claro */
+/* 2) Cabeçalhos das seções (summary) com gradiente menos “lavado” */
+/* 3) Thead das tabelas levemente mais escuro para destacar do corpo */
+/* 4) “Dados Rápidos”: tiles mais fechados no claro */
+/* Tiles dos dados (passam a usar SVG inline) */
+.dice-btn{
+  display: block;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--accent); /* ouro no dark, âmbar escuro no light */
+}
+
+.dice-btn svg{
+  width: 30px; height: 30px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(0,0,0,.10), rgba(0,0,0,.08));
+  border: 1px solid var(--glass-border);
+  padding: 10px;
+  box-sizing: content-box;
+  transition: transform .15s ease, box-shadow .2s ease;
+  display: block;
+}
+.dice-btn:hover svg{ transform: translateY(-2px) scale(1.03); box-shadow: var(--shadow-sm); }
+
+/* Light theme: fundo um pouco mais claro, mas a cor vem de var(--accent) */
+/* ===== Column widths por seção (melhor uso do espaço) ===== */
+/* mantém o cabeçalho alinhado e dá folga às colunas longas */
+
+table.grid{ table-layout: fixed; } /* já deve existir; manter */
+
+/* DETALHES DA CAMPANHA */
+#detalhes-tbl th:nth-child(1), #detalhes-tbl td:nth-child(1){ width:18%; }
+#detalhes-tbl th:nth-child(2), #detalhes-tbl td:nth-child(2){ width:52%; } /* Informação – maior */
+#detalhes-tbl th:nth-child(3), #detalhes-tbl td:nth-child(3){ width:12%; text-align:center; } /* Símbolo */
+#detalhes-tbl th:nth-child(4), #detalhes-tbl td:nth-child(4){ width:10%; } /* Facção */
+#detalhes-tbl th.actions,      #detalhes-tbl td.actions      { width:160px; }
+
+/* LUGARES */
+#lugares-tbl  th:nth-child(1), #lugares-tbl  td:nth-child(1){ width:68%; } /* Local – maior */
+#lugares-tbl  th:nth-child(2), #lugares-tbl  td:nth-child(2){ width:14%; text-align:center; } /* Visitado? */
+#lugares-tbl  th.actions,      #lugares-tbl  td.actions      { width:160px; }
+
+/* NPCs */
+#npcs-tbl     th:nth-child(1), #npcs-tbl     td:nth-child(1){ width:14%; } /* Nome */
+#npcs-tbl     th:nth-child(2), #npcs-tbl     td:nth-child(2){ width:12%; } /* Detalhe */
+#npcs-tbl     th:nth-child(3), #npcs-tbl     td:nth-child(3){ width:14%; } /* Quest */
+#npcs-tbl     th:nth-child(4), #npcs-tbl     td:nth-child(4){ width:12%; } /* Localidade */
+#npcs-tbl     th:nth-child(5), #npcs-tbl     td:nth-child(5){ width:34%; } /* O que sabe? – maior */
+#npcs-tbl     th:nth-child(6), #npcs-tbl     td:nth-child(6){ width:8%;  text-align:center; } /* Relevância */
+#npcs-tbl     th.actions,      #npcs-tbl     td.actions      { width:180px; }
+
+/* QUESTLINE */
+#eventos-tbl  th:nth-child(1), #eventos-tbl  td:nth-child(1){ width:12%; white-space:nowrap; } /* Tipo */
+#eventos-tbl  th:nth-child(2), #eventos-tbl  td:nth-child(2){ width:38%; } /* Quest */
+#eventos-tbl  th:nth-child(3), #eventos-tbl  td:nth-child(3){ width:40%; } /* Notas */
+#eventos-tbl  th.actions,      #eventos-tbl  td.actions      { width:160px; }
+
+/* ITENS & TESOUROS */
+#itens-tbl    th:nth-child(1), #itens-tbl    td:nth-child(1){ width:18%; } /* Item */
+#itens-tbl    th:nth-child(2), #itens-tbl    td:nth-child(2){ width:14%; } /* Tipo */
+#itens-tbl    th:nth-child(3), #itens-tbl    td:nth-child(3){ width:14%; } /* Dono */
+#itens-tbl    th:nth-child(4), #itens-tbl    td:nth-child(4){ width:14%; } /* Local */
+#itens-tbl    th:nth-child(5), #itens-tbl    td:nth-child(5){ width:32%; } /* Notas – maior */
+#itens-tbl    th.actions,      #itens-tbl    td.actions      { width:160px; }
+
+/* Quebra melhor de textos longos */
+table.grid th, table.grid td{ word-break: break-word; }
+
+/* ===== TABELAS: cabeçalho mais legível e coluna Ações compacta ===== */
+:root{ --actions-col: 112px; }   /* largura fixa pra coluna de Ações */
+
+table.grid{ table-layout: fixed; }  /* mantém header/body alinhados */
+
+table.grid th, table.grid td{
+  padding: 10px 12px;
+  vertical-align: top;
+  word-break: break-word;
+}
+
+table.grid thead th{
+  font-size: 13.5px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  white-space: nowrap;         /* não quebra o header */
+  overflow: hidden;
+  text-overflow: ellipsis;     /* usa … se apertar */
+  padding-right: 18px;         /* espaço p/ indicador */
+}
+
+td.actions, th.actions{
+  width: var(--actions-col);
+  text-align: center;
+}
+
+/* Zebra suave para leitura */
+table.grid tbody tr:nth-child(odd){ background: rgba(0,0,0,.06); }
+/* ===== ÍCONES nos botões de Ações ===== */
+.row-actions{ display:flex; gap:8px; justify-content:center; align-items:center; }
+
+.btn.icon-btn{
+  width: 38px; height: 34px; padding: 0;
+  border-radius: 10px;
+  display:inline-flex; align-items:center; justify-content:center;
+  background: rgba(0,0,0,.10);
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+}
+.btn.icon-btn:hover{ box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.btn.icon-btn.danger{ color:#fff; background: linear-gradient(135deg,#ef4444,#dc2626); border:none; }
+.btn.icon-btn i{ font-size: 14px; line-height: 1; }
+
+/* ===== Indicador de ordenação no hover do cabeçalho ===== */
+table.grid thead th:not(.actions):not(.sort-asc):not(.sort-desc):hover::after{
+  content: ' ⇅';              /* aparece só ao passar o mouse em colunas não ordenadas */
+  color: var(--accent);
+  opacity: .7;
+}
+th.sort-asc::after{  content: " ▲"; color: var(--accent); }
+th.sort-desc::after{ content: " ▼"; color: var(--accent); }
+
+  
+
+/* ===== PATCHES ADICIONADOS ===== */
+
+/* Notes não extrapola o card */
+.notes{ overflow: hidden; }
+.notes textarea#quickNotes{
+  width:100%; max-width:100%; min-height:140px; resize:vertical; display:block;
+  box-sizing:border-box; background:rgba(0,0,0,.2); border:1px solid var(--glass-border);
+  border-radius:10px; color:var(--text); padding:10px 12px; outline:none;
+}
+
+/* Dice icons: grade centralizada (2 colunas) e SVG com currentColor */
+.dice-roller .dice-buttons{
+  display:grid;
+  grid-template-columns: repeat(2, 96px);
+  gap:16px 22px;
+  width:fit-content;
+  margin:10px auto 0;
+  justify-items:center;
+  align-items:center;
+}
+.dice-btn{ display:block; background:transparent; border:none; padding:0; cursor:pointer; color:var(--accent); }
+.dice-btn svg{
+  width:84px; height:84px;
+  border-radius:14px;
+  background:linear-gradient(135deg, rgba(0,0,0,.10), rgba(0,0,0,.08));
+  border:1px solid var(--glass-border);
+  padding:10px; box-sizing:content-box;
+  transition:transform .15s ease, box-shadow .2s ease; display:block;
+}
+.dice-btn:hover svg{ transform:translateY(-2px) scale(1.03); box-shadow:var(--shadow-sm); }
+/* Party tracker: nível editável visual */
+.party-tracker .party-member{ display:flex; justify-content:space-between; align-items:center; gap:10px; padding:6px 8px; border-radius:10px; }
+.party-tracker .level-wrap{ display:flex; align-items:center; gap:6px; color:var(--text-muted); font-weight:600; }
+.party-tracker .member-level[contenteditable]{ cursor:text; }
+.party-tracker .member-level[contenteditable="true"]{
+  min-width:32px; text-align:center; color:var(--text);
+  background:rgba(0,0,0,.2); border:1px solid var(--glass-border);
+  border-radius:8px; padding:2px 10px; outline:none;
+}
+.party-tracker .member-level[contenteditable="true"]:empty::before{ content:'?'; color:var(--text-muted); }
+
+/* Header/tables alignment + fallback gutter */
+.table-wrap{
+  overflow:auto; max-height:600px;
+  scrollbar-gutter: stable both-edges;
+  --sbw: 0px;
+}
+table.grid{ width:100%; table-layout:fixed; }
+table.grid th, table.grid td{ word-break: break-word; }
+
+/* Cabeçalho mais legível e coluna ações compacta */
+:root{ --actions-col: 112px; }
+table.grid th, table.grid td{ padding:10px 12px; vertical-align:top; }
+table.grid thead th{
+  font-size:13.5px; line-height:1.25; text-transform:uppercase; letter-spacing:.04em;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding-right:18px;
+}
+td.actions, th.actions{ width:var(--actions-col); text-align:center; }
+
+/* Zebra suave */
+table.grid tbody tr:nth-child(odd){ background: rgba(0,0,0,.06); }
+/* Indicador de ordenação */
+table.grid thead th:not(.actions):not(.sort-asc):not(.sort-desc):hover::after{
+  content:' ⇅'; color:var(--accent); opacity:.7;
+}
+th.sort-asc::after{ content:' ▲'; color:var(--accent); }
+th.sort-desc::after{ content:' ▼'; color:var(--accent); }
+
+/* Ações por ícones */
+.row-actions{ display:flex; gap:8px; justify-content:center; align-items:center; }
+.btn.icon-btn{
+  width:38px; height:34px; padding:0; border-radius:10px;
+  display:inline-flex; align-items:center; justify-content:center;
+  background:rgba(0,0,0,.10); border:1px solid var(--glass-border); color:var(--text);
+}
+.btn.icon-btn:hover{ box-shadow:var(--shadow-sm); transform: translateY(-1px); }
+.btn.icon-btn.danger{ color:#fff; background: linear-gradient(135deg,#ef4444,#dc2626); border:none; }
+.btn.icon-btn i{ font-size:14px; line-height:1; }
+
+/* Light theme tweaks v2 */
+/* ===== Dice: efeitos de CRÍTICO / FALHA ===== */
+:root{
+  --crit-max: #facc15; /* amarelo-ouro */
+  --crit-min: #ef4444; /* vermelho */
+}
+
+@keyframes dice-shake {
+  0%{transform:translate(0,0) rotate(0)}
+  20%{transform:translate(-2px,2px) rotate(-10deg)}
+  40%{transform:translate(3px,-2px) rotate(8deg)}
+  60%{transform:translate(-2px,1px) rotate(-6deg)}
+  80%{transform:translate(1px,-1px) rotate(4deg)}
+  100%{transform:translate(0,0) rotate(0)}
+}
+@keyframes result-pulse {
+  0%{transform:scale(1);opacity:.95}
+  50%{transform:scale(1.08);opacity:1}
+  100%{transform:scale(1);opacity:.95}
+}
+@keyframes ring-pop {
+  from{transform:translate(-50%,-50%) scale(.9);opacity:.9}
+  to{transform:translate(-50%,-50%) scale(1.3);opacity:0}
+}
+@keyframes crit-pop {
+  0%{transform:scale(1)}
+  40%{transform:scale(1.12)}
+  100%{transform:scale(1)}
+}
+
+/* animação base da rolagem (já usada) */
+.dice-btn.rolling svg{ animation: dice-shake 650ms cubic-bezier(.2,.8,.2,1); filter: drop-shadow(0 6px 10px rgba(0,0,0,.25)); }
+.dice-roller .dice-result.rolling{ animation: result-pulse 650ms ease-in-out; }
+
+/* preparar o botão pro anel de crítico */
+.dice-btn{ position: relative; overflow: visible; }
+
+/* crítico (máximo) – brilho dourado + anel */
+.dice-btn.crit-max{ color: var(--crit-max); }
+.dice-btn.crit-max svg{ filter: drop-shadow(0 0 10px rgba(250,204,21,.55)); }
+.dice-btn.crit-max::after{
+  content:''; position:absolute; left:50%; top:50%; width:88px; height:88px;
+  border-radius:16px; border:2px solid var(--crit-max); pointer-events:none;
+  animation: ring-pop 700ms ease-out forwards;
+}
+
+/* falha crítica (1) – vermelho */
+.dice-btn.crit-min{ color: var(--crit-min); }
+.dice-btn.crit-min svg{ filter: drop-shadow(0 0 10px rgba(239,68,68,.5)); }
+.dice-btn.crit-min::after{
+  content:''; position:absolute; left:50%; top:50%; width:88px; height:88px;
+  border-radius:16px; border:2px solid var(--crit-min); pointer-events:none;
+  animation: ring-pop 700ms ease-out forwards;
+}
+
+/* resultado com pop colorido */
+.dice-roller .dice-result.crit-max{
+  color: var(--crit-max); text-shadow:0 0 8px rgba(250,204,21,.55);
+  animation: crit-pop 700ms cubic-bezier(.2,.8,.2,1);
+}
+.dice-roller .dice-result.crit-min{
+  color: var(--crit-min); text-shadow:0 0 8px rgba(239,68,68,.45);
+  animation: crit-pop 700ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* acessibilidade: reduz movimento */
+@media (prefers-reduced-motion: reduce){
+  .dice-btn.rolling svg,
+  .dice-roller .dice-result.rolling,
+  .dice-btn.crit-max::after,
+  .dice-btn.crit-min::after{
+    animation: none !important;
+  }
+}
+/* ===== Container mais largo (header + main) ===== */
+:root{
+  /* ajuste aqui se quiser mais/menos largura */
+  --container-max: 1680px;   /* antes era 1400px */
+  --toc-w: 320px;            /* largura da barra lateral (antes ~300px) */
+  --container-gap: 36px;     /* espaço entre TOC e conteúdo (antes 32px) */
+}
+
+/* alinha a largura do header e do conteúdo principal */
+header .wrap{ max-width: var(--container-max); }
+main{
+  max-width: var(--container-max);
+  grid-template-columns: var(--toc-w) 1fr;  /* TOC + conteúdo */
+  gap: var(--container-gap);
+}
+
+/* um pouquinho mais em telas muito grandes, opcional */
+@media (min-width: 1920px){
+  :root{
+    --container-max: 1800px;
+    --toc-w: 340px;
+  }
+}
+/* ===== Colunas redimensionáveis ===== */
+table.grid thead th{ position: relative; } /* precisa para posicionar o grip */
+
+.col-resizer{
+  position: absolute;
+  top: 0; right: -3px;         /* levemente para fora p/ facilitar o hover */
+  width: 8px; height: 100%;
+  cursor: col-resize;
+  user-select: none;
+  touch-action: none;
+}
+.col-resizer::before{
+  content: '';
+  position: absolute;
+  left: 3px; top: 20%;
+  width: 2px; height: 60%;
+  background: rgba(0,0,0,.18);
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity .15s ease;
+}
+table.grid thead th:hover .col-resizer::before{ opacity: .65; }
+/* feedback durante o drag */
+body.is-col-resizing{ cursor: col-resize !important; user-select: none; }
+
+
+/* === Anti-flash (fundo sólido + gradiente fixo) === */
+html, body { background:#0b1220; } /* base 100% opaca para evitar "flash" claro */
+body::after{
+  content:"";
+  position:fixed; inset:0; z-index:-2; pointer-events:none;
+  background: var(--bg-grad); /* gradiente fica numa camada fixa */
+}
+
+/* === Durante scroll: desliga vidro p/ estabilizar composição === */
+.scrolling header{
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: rgba(13,20,33,.95);
+}
+
+/* === Mobile: header sólido é mais estável === */
+@media (max-width: 720px){
+  header{ backdrop-filter:none; background:rgba(13,20,33,.95); }
+}
+
+/* === Questline styles & steps === */
+.quest-row{
+  /* botão + título em cima, steps embaixo ocupando a largura toda */
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "toggle title"
+                       "steps  steps";
+  gap: 8px 10px;
+  align-items: center;
+}
+.quest-title{ grid-area: title; font-weight: 600; }
+.quest-toggle{ grid-area: toggle; width: 30px; height: 30px; border-radius: 8px; }
+.quest-steps{
+  grid-area: steps;
+  width: 100%;
+  margin-top: 4px;
+  padding: 10px;
+  border: 1px dashed var(--grid);
+  border-radius: 10px;
+  background: rgba(0,0,0,.12);
+}
+.quest-steps[hidden]{ display: none !important; }
+
+
+/* === Galeria (safe) === */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;position:relative;z-index:0;padding:12px 16px 18px}
+.gallery-item{position:relative;z-index:0;overflow:hidden;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--grid)}
+.gallery-item[draggable="true"]{cursor:grab}
+.gallery-item.dragging{opacity:.5}
+.gallery-item img{width:100%;height:160px;object-fit:cover;display:block}
+.gallery-item .meta{display:grid;grid-template-columns:1fr auto;align-items:center;gap:6px;padding:8px 10px;font-size:12px}
+.gallery-item .caption{outline:none;border:0;background:transparent;color:var(--text);min-height:20px}
+.gallery-item .caption:empty:before{content:'Adicionar legenda...';color:var(--text-muted)}
+.gallery-item .actions{position:absolute;top:8px;right:8px;display:flex;gap:6px}
+.gallery-item .actions .btn{padding:6px 8px;border-radius:10px}
+.gallery-item .badge{font-size:11px;opacity:.75}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:9999}
+.lightbox.open{display:flex}
+.lightbox img{max-width:95vw;max-height:90vh;border-radius:12px}
+
+/* ——— Corrige sobreposição da Galeria ——— */
+#galeria-section { 
+  position: relative;           /* cria contexto próprio */
+  isolation: isolate;           /* isola os filhos do restante da página */
+  z-index: 0;                   /* fica no mesmo plano das outras seções */
+  margin-bottom: 20px;          /* garante respiro abaixo */
+}
+
+/* se o seu tema usa summary "grudadinho"/sticky, desligue só aqui */
+#galeria-section summary {
+  position: static !important;
+  top: auto !important;
+  z-index: auto !important;
+}
+
+/* nada dentro da galeria precisa de z-index alto */
+#galeria-section .controls,
+#galeria-section .gallery-grid {
+  position: relative;
+  z-index: 0;
+}
+
+/* apenas os botões por cima da imagem */
+#galeria-section .gallery-item .actions { z-index: 1; }
+
+/* defesa extra: se houver brilhos/pseudo-elementos no card,
+   mantenha-os atrás e sem clique */
+#galeria-section::before,
+#galeria-section::after {
+  pointer-events: none;
+  z-index: -1;
+}
+/* ——— Galeria: neutraliza sticky, z-index e margens puxadas ——— */
+#galeria-section{
+  position: relative !important;
+  isolation: isolate !important;
+  z-index: 0 !important;
+  overflow: hidden;                 /* corta brilho/sombra que passa da borda */
+  margin-top: 32px !important;      /* anula qualquer margem negativa do tema */
+  margin-bottom: 24px !important;
+}
+
+/* desliga qualquer sticky/blur aplicado genericamente ao summary */
+#galeria-section > details.section,
+#galeria-section > details.section > summary{
+  position: static !important;
+  top: auto !important;
+  z-index: auto !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* alguns temas colocam pseudo-elementos com z-index alto no header */
+#galeria-section > details.section > summary::before,
+#galeria-section > details.section > summary::after{
+  content: none !important;
+}
+
+/* os elementos internos não precisam subir na pilha */
+#galeria-section .controls,
+#galeria-section .gallery-grid{
+  position: relative !important;
+  z-index: 0 !important;
+}
+
+/* só os botões sobre a imagem precisam ficar por cima da thumb */
+#galeria-section .gallery-item .actions{ z-index: 1 !important; }
+
+main > .block { position: relative; z-index: 0; }
+
+
+/* Galeria na coluna de conteúdo */
+#galeria-section{ grid-column: 2 / 3; }
+@media (max-width: 1200px){
+  #galeria-section{ grid-column: 1 / -1; }
+}
+
+
+/* ANOTAÇÕES DA SESSÃO */
+#anotacoes-tbl th:nth-child(1), #anotacoes-tbl td:nth-child(1){ width: 120px; white-space: nowrap; }
+#anotacoes-tbl th:nth-child(2), #anotacoes-tbl td:nth-child(2){ width: 140px; white-space: nowrap; }
+#anotacoes-tbl th:nth-child(3), #anotacoes-tbl td:nth-child(3){ min-width: 380px; }
+
+
+/* === Layout normalize (patch) — keep sections/order intact ====================
+   1) Ações com largura única; 2) Ícone do tipo de quest; 3) Steps mais legíveis
+   4) Controles/forms e botões com espaçamento consistente                    */
+
+/* 1) Coluna "Ações" padronizada para todas as tabelas */
+table.grid th.actions,
+table.grid td.actions{
+  width: 128px !important;         /* unifica (sobrepõe widths específicos) */
+  text-align: center;
+}
+
+/* 2) Ícone/label do tipo de quest (Main/Side) */
+.quest-type{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.quest-type.main{ color: var(--accent); }
+.quest-type.side{ color: var(--text-muted); }
+.quest-type i{ width: 18px; text-align: center; }
+
+/* 3) Lista de steps abaixo da quest */
+.quest-steps ul{ list-style: none; margin: 6px 0 0; padding: 0; }
+.quest-steps li{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,0,0,.08);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 6px 8px;
+  margin-bottom: 6px;
+}
+.quest-steps li.done{ opacity: .75; text-decoration: line-through; }
+.step-controls{ display: flex; gap: 8px; align-items: center; margin-top: 8px; }
+.step-controls .step-input{
+  flex: 1;
+  min-width: 180px;
+  background: rgba(0,0,0,.2);
+  color: var(--text);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+/* 4) Botões de ícone nas linhas */
+.row-actions .btn.icon-btn{
+  width: 36px; height: 34px;
+  padding: 0;
+}
+
+/* 5) Busca: garante largura responsiva nas barras de controle */
+.controls input[type="search"]{ flex: 1 1 320px; }
+
+/* 6) Mantém o cabeçalho das tabelas alinhado mesmo com barra de rolagem */
+.table-wrap{ scrollbar-gutter: stable both-edges; }
+.table-wrap thead th:last-child{ padding-right: var(--sbw); }
+
+
+
+
+/* === Próxima Sessão (chip no header) === */
+header .wrap{ position: relative; }
+.next-session-chip{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 12px; margin-left:8px;
+  border:1px solid var(--glass-border);
+  border-radius:12px;
+  background: rgba(0,0,0,.18);
+  font-family:'Cinzel',serif; font-weight:600; font-size:14px;
+  cursor:pointer; user-select:none;
+}
+.next-session-chip i{ color: var(--accent); }
+.next-session-chip:hover{ transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+.next-session-pop{
+  position:absolute; top:100%; left:24px; margin-top:8px;
+  background: rgba(13,20,33,.98);
+  border:1px solid var(--glass-border);
+  border-radius:12px;
+  padding:12px; z-index: 200;
+  display:none; min-width: 280px;
+  box-shadow: var(--shadow);
+}
+.next-session-pop .lbl{ display:block; font-family:'Cinzel',serif; font-size:13px; color:var(--text-muted); margin-bottom:6px; }
+.next-session-pop input[type="datetime-local"]{
+  width:100%;
+  background: rgba(0,0,0,.2);
+  color: var(--text);
+  border:1px solid var(--glass-border);
+  border-radius:10px;
+  padding:8px 10px;
+  font: inherit;
+  margin-bottom:10px;
+}
+.next-session-pop .pop-actions{ display:flex; gap:8px; justify-content:flex-end; }
+
+
+.modal[hidden]{display:none}
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:5000;background:rgba(5,10,20,.7)}
+.modal-dialog{width:min(900px,92vw);max-height:90vh;overflow:hidden;border-radius:18px;background:var(--card-bg,#0f172a);border:1px solid var(--glass-border,#2a3242);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.modal-header{display:flex;align-items:center;gap:.75rem;padding:14px 18px;border-bottom:1px dashed var(--grid,#374151)}
+.modal-header .spacer{flex:1}
+.modal-body{padding:14px 18px;display:flex;flex-direction:column;gap:12px}
+.jb-controls{display:flex;align-items:center;gap:.5rem}
+.jb-controls .vol{display:flex;align-items:center;gap:.5rem;min-width:180px}
+.jb-add{display:flex;gap:.5rem}
+.jb-add .input{flex:1}
+.jb-list{list-style:decimal-leading-zero inside;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.jb-item{display:flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.02);padding:8px 10px;border-radius:10px}
+.jb-item .title{flex:1}
+.jb-item .badge{font-size:.75rem;opacity:.7}
+.jb-item .row-actions{display:flex;gap:.35rem}
+.jb-item.playing{outline:1px solid #f5c84b;background:rgba(245,200,75,.08)}
+#jbYT{ width:100%; height:320px; background:#000; border-radius:10px; overflow:hidden; }
+@media (min-height: 800px){ #jbYT{ width:100%; height:320px; background:#000; border-radius:10px; overflow:hidden; } }
+
+
+@media (min-height: 800px){ #jbYT{ width:100%; height:320px; background:#000; border-radius:10px; overflow:hidden; } }
+header .toolbar a {
+  text-decoration: none;       /* remove sublinhado */
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1><i class="fas fa-dragon"></i> Guia da Campanha Tico Duro - D&D 5e</h1><div class="next-session-chip" id="nextSessionChip" title="Definir próxima sessão">
+        <i class="fas fa-clock"></i>
+        <span id="nextSessionText">Próx. sessão: —</span>
+      </div>
+      <div class="next-session-pop" id="nextSessionPop" aria-hidden="true">
+        <label for="nextSessionInput" class="lbl">Data e hora</label>
+        <input type="datetime-local" id="nextSessionInput">
+        <div class="pop-actions">
+          <button class="btn small primary" id="nextSessionSave"><i class="fa-solid fa-check"></i> Salvar</button>
+          <button class="btn small" id="nextSessionCancel"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+          <button class="btn small danger" id="nextSessionClear"><i class="fa-solid fa-trash"></i> Limpar</button>
+        </div>
+      </div>
+<div class="h-spacer"></div>
+      <div class="toolbar" id="actions-bar">
+        <button class="btn" id="exportJson"><i class="fas fa-download"></i> JSON</button>
+        <button class="btn" id="importJson"><i class="fas fa-upload"></i> Importar</button>
+<a class="btn" href="regras-da-casa.html" id="openHouseRules"><i class="fa-solid fa-book"></i> Regras </a>
+        <button class="btn danger" id="resetAll"><i class="fas fa-trash-alt"></i> Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav id="toc">
+      <h3><i class="fas fa-scroll"></i> Seções</h3>
+      <a href="#eventos"><i class="fas fa-hourglass-half"></i> Questline</a>
+      <a href="#npcs"><i class="fas fa-users"></i> NPCs</a>
+      <a href="#itens"><i class="fas fa-gem"></i> Itens & Tesouros</a>
+      <a href="#lugares"><i class="fas fa-map-marked-alt"></i> Lugares</a>
+      <a href="#detalhes"><i class="fas fa-info-circle"></i> Detalhes da Campanha</a>
+      <a href="#anotacoes"><i class="fas fa-clipboard-list"></i> Anotações da Sessão</a>
+      <a href="#galeria"><i class="fas fa-images"></i> Galeria</a>
+      <div class="quick-stats">
+        <h4><i class="fas fa-chart-bar"></i> Estatísticas</h4>
+        <div class="stats-grid">
+          <div class="stat-item"><div class="stat-number" id="npcCount">0</div><div class="stat-label">NPCs</div></div>
+          <div class="stat-item"><div class="stat-number" id="locationCount">0</div><div class="stat-label">Locais</div></div>
+          <div class="stat-item"><div class="stat-number" id="questCount">0</div><div class="stat-label">Missões</div></div>
+          <div class="stat-item"><div class="stat-number" id="itemCount">0</div><div class="stat-label">Itens</div></div>
+        </div>
+      </div>
+
+      <div class="party-tracker">
+        <h4><i class="fas fa-users"></i> Grupo</h4>
+      
+        <div class="party-member">
+          <span class="member-name">Soren</span>
+          <span class="level-wrap">
+            <span class="level-label">Nível</span>
+            <span class="member-level" contenteditable="true" spellcheck="false" tabindex="0">?</span>
+          </span>
+        </div>
+      
+        <div class="party-member">
+          <span class="member-name">Tristan</span>
+          <span class="level-wrap">
+            <span class="level-label">Nível</span>
+            <span class="member-level" contenteditable="true" spellcheck="false" tabindex="0">?</span>
+          </span>
+        </div>
+      
+        <div class="party-member">
+          <span class="member-name">Eldrin</span>
+          <span class="level-wrap">
+            <span class="level-label">Nível</span>
+            <span class="member-level" contenteditable="true" spellcheck="false" tabindex="0">?</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="dice-roller">
+        <h4><i class="fas fa-dice-d20"></i> Dados Rápidos</h4>
+        <div class="dice-buttons">
+  <button class="dice-btn" data-dice="4" aria-label="Rolar d4">
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="40,8 10,68 70,68" fill="none" stroke="currentColor" stroke-width="3"/>
+      <text x="50%" y="58%" text-anchor="middle" font-size="18" font-family="Cinzel" fill="currentColor">d4</text>
+    </svg>
+  </button>
+  <button class="dice-btn" data-dice="6" aria-label="Rolar d6">
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <rect x="12" y="12" width="56" height="56" rx="10" ry="10" fill="none" stroke="currentColor" stroke-width="3"/>
+      <text x="50%" y="55%" text-anchor="middle" font-size="18" font-family="Cinzel" fill="currentColor">d6</text>
+    </svg>
+  </button>
+  <button class="dice-btn" data-dice="8" aria-label="Rolar d8">
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="40,10 10,40 40,70 70,40" fill="none" stroke="currentColor" stroke-width="3"/>
+      <text x="50%" y="55%" text-anchor="middle" font-size="18" font-family="Cinzel" fill="currentColor">d8</text>
+    </svg>
+  </button>
+  <button class="dice-btn" data-dice="10" aria-label="Rolar d10">
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="40,8 15,28 12,52 40,72 68,52 65,28" fill="none" stroke="currentColor" stroke-width="3"/>
+      <text x="50%" y="57%" text-anchor="middle" font-size="18" font-family="Cinzel" fill="currentColor">d10</text>
+    </svg>
+  </button>
+  <button class="dice-btn" data-dice="12" aria-label="Rolar d12">
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="40,6 20,16 10,36 14,56 30,70 50,70 66,56 70,36 60,16" fill="none" stroke="currentColor" stroke-width="3"/>
+      <text x="50%" y="58%" text-anchor="middle" font-size="18" font-family="Cinzel" fill="currentColor">d12</text>
+    </svg>
+  </button>
+  <button class="dice-btn" data-dice="20" aria-label="Rolar d20">
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="40,6 12,26 12,54 40,74 68,54 68,26" fill="none" stroke="currentColor" stroke-width="3"/>
+      <line x1="12" y1="26" x2="68" y2="54" stroke="currentColor" stroke-width="2" opacity=".6"/>
+      <line x1="68" y1="26" x2="12" y2="54" stroke="currentColor" stroke-width="2" opacity=".6"/>
+      <text x="50%" y="57%" text-anchor="middle" font-size="18" font-family="Cinzel" fill="currentColor">d20</text>
+    </svg>
+  </button>
+</div>              
+        <div class="dice-result" id="diceResult">Rolar dado</div>
+      </div>
+
+      <div class="notes">
+        <h3><i class="fas fa-feather-alt"></i> Anotações Rápidas</h3>
+        <textarea id="quickNotes" placeholder="Observações da sessão, loot, XP, pendências..."></textarea>
+        <div style="display:flex;gap:8px;margin-top:8px"><button class="btn" id="saveNotes"><i class="fas fa-save"></i> Salvar</button><button class="btn" id="clearNotes"><i class="fas fa-eraser"></i> Limpar</button></div>
+      </div>
+    </nav>
+    <div>
+      <!-- Detalhes da Campanha -->
+      <section class="block" id="eventos-section">
+  <details class="section" open>
+    <summary><h2 id="eventos"><i class="fas fa-scroll"></i> Questline</h2></summary>
+    <div class="controls">
+      <input type="search" placeholder="Buscar nesta seção..." data-table="eventos-tbl">
+      <button class="btn small" data-add-toggle="eventos"><i class="fas fa-plus"></i> Adicionar</button>
+      <button class="btn small danger" data-reset="eventos"><i class="fas fa-undo"></i> Resetar</button>
+    </div>
+    <div class="inline-form" data-form="eventos">
+      <select data-quest-type>
+        <option value="Main">Main Quest</option>
+        <option value="Side">Side Quest</option>
+      </select>
+      <input placeholder="Título da Quest" />
+      <textarea placeholder="Notas"></textarea>
+      <button class="btn primary" data-form-submit="eventos">Salvar</button>
+      <button class="btn" data-form-cancel>Cancelar</button>
+    </div>
+    <div class="table-wrap">
+      <table class="grid" id="eventos-tbl" data-sortable="true">
+        <thead><tr><th>Tipo</th><th>Quest</th><th>Notas</th><th class="actions">Ações</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </details>
+</section>
+<section class="block" id="npcs-section">
+        <details class="section" open>
+          <summary><h2 id="npcs"><i class="fas fa-users"></i> NPCs</h2></summary>
+          <div class="controls">
+            <input type="search" placeholder="Buscar nesta seção..." data-table="npcs-tbl">
+            <button class="btn small" data-edit-toggle="npcs-tbl"><i class="fas fa-edit"></i> Modo Edição</button>
+            <button class="btn small" data-add-toggle="npcs"><i class="fas fa-plus"></i> Adicionar</button>
+            <button class="btn small" data-export-csv="npcs-tbl"><i class="fas fa-file-csv"></i> CSV</button>
+            <button class="btn small danger" data-reset="npcs"><i class="fas fa-undo"></i> Resetar</button>
+          </div>
+          <div class="inline-form" data-form="npcs">
+            <input placeholder="Nome" />
+            <input placeholder="Detalhe" />
+            <input placeholder="Quest" />
+            <input placeholder="Localidade" />
+            <textarea placeholder="O que sabe?"></textarea>
+            <select>
+              <option value="Sim">Sim</option>
+              <option value="Talvez">Talvez</option>
+              <option value="Não">Não</option>
+            </select>
+            <button class="btn primary" data-form-submit="npcs">Salvar</button>
+            <button class="btn" data-form-cancel>Cancelar</button>
+          </div>
+          <div class="table-wrap">
+            <table class="grid" id="npcs-tbl" data-sortable="true">
+              <thead><tr><th>Nome</th><th>Detalhe</th><th>Quest</th><th>Localidade</th><th>O que sabe?</th><th>Relevância</th><th class="actions">Ações</th></tr></thead>
+              <tbody>
+                <tr><td contenteditable="false">Anabella Rosfield</td><td contenteditable="false">Rainha</td><td contenteditable="false"></td><td contenteditable="false">Blivehold</td><td contenteditable="false">Disse que as comunicações com a rainha e o rei de Vandholde não estão boas<br>As coisas parecem estranhas em Vanhholde</td><td data-rel="Talvez" contenteditable="false"><span class="tag maybe">Talvez</span></td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Bartholomeu Hallwinter</td><td contenteditable="false">Guarda Real</td><td contenteditable="false"></td><td contenteditable="false">Blivehold</td><td contenteditable="false"></td><td data-rel="Não" contenteditable="false"><span class="tag no">Não</span></td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Cassandra Dawnspire</td><td contenteditable="false">Mercadora</td><td contenteditable="false"></td><td contenteditable="false">Blivehold</td><td contenteditable="false"></td><td data-rel="Não" contenteditable="false"><span class="tag no">Não</span></td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Cedric Highmoor</td><td contenteditable="false">Bibliotecário</td><td contenteditable="false"></td><td contenteditable="false">Blivehold</td><td contenteditable="false">Também conhecido como Cedric Allure<br>- Falar para o Rei ou para a rainha que Cedric Allure enviou a gente pela Ordem da Lua (Ordem Secreta), não pode ser falada sobre para qualquer um, não apenas por ser secreta mas por que coisas ruins podem acontecer conosco.</td><td data-rel="Talvez" contenteditable="false"><span class="tag maybe">Talvez</span></td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Eldric Waverun</td><td contenteditable="false">Ferreiro</td><td contenteditable="false"></td><td contenteditable="false">Blivehold</td><td contenteditable="false"></td><td data-rel="Não" contenteditable="false"><span class="tag no">Não</span></td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Elwin Rosfield</td><td contenteditable="false">Rei</td><td contenteditable="false"></td><td contenteditable="false">Blivehold</td><td contenteditable="false">- Artefatos de poder espalhados pelo continente (fragmentos da espada Dragon Slayer)</td><td data-rel="Talvez" contenteditable="false"><span class="tag maybe">Talvez</span></td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Lord Caldan Marrick Arrigal (a.k.a. Marrigal Caldas)</td><td contenteditable="false"></td><td contenteditable="false">Tráfico Humano</td><td contenteditable="false">Desconhecida</td><td contenteditable="false"></td><td data-rel="Talvez" contenteditable="false"><span class="tag maybe">Talvez</span></td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Lorde Himethrol</td><td contenteditable="false">Cavaleiro do Dragão</td><td contenteditable="false"></td><td contenteditable="false">Blivehold</td><td contenteditable="false"></td><td data-rel="Talvez" contenteditable="false"><span class="tag maybe">Talvez</span></td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Manolo Thrembul</td><td contenteditable="false">Gladiador</td><td contenteditable="false"></td><td contenteditable="false">Blivehold</td><td contenteditable="false"></td><td data-rel="Talvez" contenteditable="false"><span class="tag maybe">Talvez</span></td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Timothy Burns</td><td contenteditable="false">Bárbaro de Arena</td><td contenteditable="false"></td><td contenteditable="false">Blivehold</td><td contenteditable="false"></td><td data-rel="Talvez" contenteditable="false"><span class="tag maybe">Talvez</span></td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Tristan Kendrick</td><td contenteditable="false">Arquemago</td><td contenteditable="false">O Orbe Danificado</td><td contenteditable="false">Sylvaris</td><td contenteditable="false"></td><td data-rel="Sim" contenteditable="false"><span class="tag yes">Sim</span></td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Veyrik Stormfang</td><td contenteditable="false">Mercador de Armaduras</td><td contenteditable="false"></td><td contenteditable="false">Blivehold</td><td contenteditable="false"></td><td data-rel="Não" contenteditable="false"><span class="tag no">Não</span></td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Rei Zola</td><td contenteditable="false"></td><td contenteditable="false"></td><td contenteditable="false"></td><td contenteditable="false"></td><td data-rel="Não" contenteditable="false"><span class="tag no">Não</span></td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Rainha Zeal</td><td contenteditable="false"></td><td contenteditable="false"></td><td contenteditable="false"></td><td contenteditable="false"></td><td data-rel="Não" contenteditable="false"><span class="tag no">Não</span></td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </section>
+<section class="block" id="itens-section">
+        <details class="section" open>
+          <summary><h2 id="itens"><i class="fas fa-gem"></i> Itens & Tesouros</h2></summary>
+          <div class="controls">
+            <input type="search" placeholder="Buscar nesta seção..." data-table="itens-tbl">
+            <button class="btn small" data-edit-toggle="itens-tbl"><i class="fas fa-edit"></i> Modo Edição</button>
+            <button class="btn small" data-add-toggle="itens"><i class="fas fa-plus"></i> Adicionar</button>
+            <button class="btn small danger" data-reset="itens"><i class="fas fa-undo"></i> Resetar</button>
+          </div>
+          <div class="inline-form" data-form="itens">
+            <input placeholder="Item" />
+            <input placeholder="Tipo" />
+            <input placeholder="Dono" />
+            <input placeholder="Local" />
+            <textarea placeholder="Notas"></textarea>
+            <button class="btn primary" data-form-submit="itens">Salvar</button>
+            <button class="btn" data-form-cancel>Cancelar</button>
+          </div>
+          <div class="table-wrap">
+            <table class="grid" id="itens-tbl" data-sortable="true">
+              <thead><tr><th>Item</th><th>Tipo</th><th>Dono</th><th>Local</th><th>Notas</th><th class="actions">Ações</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </details>
+      </section>
+<section class="block" id="lugares-section">
+        <details class="section" open>
+          <summary><h2 id="lugares"><i class="fas fa-map-marked-alt"></i> Lugares</h2></summary>
+          <div class="controls">
+            <input type="search" placeholder="Buscar nesta seção..." data-table="lugares-tbl">
+            <button class="btn small" data-edit-toggle="lugares-tbl"><i class="fas fa-edit"></i> Modo Edição</button>
+            <button class="btn small" data-add-toggle="lugares"><i class="fas fa-plus"></i> Adicionar</button>
+            <button class="btn small" data-export-csv="lugares-tbl"><i class="fas fa-file-csv"></i> CSV</button>
+            <button class="btn small danger" data-reset="lugares"><i class="fas fa-undo"></i> Resetar</button>
+          </div>
+          <div class="inline-form" data-form="lugares">
+            <input placeholder="Local" />
+            <select>
+              <option value="✔️">✔️ Visitado</option>
+              <option value="—">— Não</option>
+            </select>
+            <button class="btn primary" data-form-submit="lugares">Salvar</button>
+            <button class="btn" data-form-cancel>Cancelar</button>
+          </div>
+          <div class="table-wrap">
+            <table class="grid" id="lugares-tbl" data-sortable="true">
+              <thead><tr><th>Local</th><th>Visitado?</th><th class="actions">Ações</th></tr></thead>
+              <tbody>
+                <tr><td contenteditable="false">Bliveholde</td><td contenteditable="false">✔️</td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Sylvaris</td><td contenteditable="false">—</td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Torntrad</td><td contenteditable="false">—</td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </section>
+<section class="block" id="detalhes-section">
+        <details class="section" open>
+          <summary><h2 id="detalhes"><i class="fas fa-info-circle"></i> Detalhes da Campanha</h2></summary>
+          <div class="controls">
+            <input type="search" placeholder="Buscar nesta seção..." data-table="detalhes-tbl">
+            <button class="btn small" data-edit-toggle="detalhes-tbl"><i class="fas fa-edit"></i> Modo Edição</button>
+            <button class="btn small" data-add-toggle="detalhes"><i class="fas fa-plus"></i> Adicionar</button>
+            <button class="btn small" data-export-csv="detalhes-tbl"><i class="fas fa-file-csv"></i> CSV</button>
+            <button class="btn small danger" data-reset="detalhes"><i class="fas fa-undo"></i> Resetar</button>
+          </div>
+          <div class="inline-form" data-form="detalhes">
+            <input placeholder="Quem sabe a info?" />
+            <textarea placeholder="Informação"></textarea>
+            <input placeholder="Símbolo" />
+            <input placeholder="Facção" />
+            <button class="btn primary" data-form-submit="detalhes">Salvar</button>
+            <button class="btn" data-form-cancel>Cancelar</button>
+          </div>
+          <div class="table-wrap">
+            <table class="grid" id="detalhes-tbl" data-sortable="true">
+              <thead><tr><th>Quem sabe a info?</th><th>Informação</th><th>Símbolo</th><th>Facção</th><th class="actions">Ações</th></tr></thead>
+              <tbody>
+                <tr><td contenteditable="false">Soren Tristan Eldrin</td><td contenteditable="false">O velhote (do cervo): Tentei vir salvar alguém e acabei preso nesta floresta. Obrigado por libertarem meu espírito desta maldição. (Soren e Eldrin ouviram e Soren informou Tristan depois – Tristan sentiu a presença astral)</td><td contenteditable="false">Cervo</td><td contenteditable="false">?</td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Soren Tristan Eldrin</td><td contenteditable="false">3 Zhentarim: Tudo isso por causa do maldito do Marrick. / Aquele filho da puta nos mandou pra morte! / Desgraçado, ficamos presos na floresta por culpa dele. (Tristan ouviu e informou Soren e Eldrin depois – Soren sentiu a presença astral, Eldrin não sentiu nada, nem remorso hehehe)</td><td contenteditable="false">Serpente Alada</td><td contenteditable="false">Zhentarim</td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Eldrin</td><td contenteditable="false">2 Zhentarim: Aquele corno! Vivem pra morrer por causa dele! / Tudo isso por causa daquele desgraçado do Marrick e seu esquema de raptar pessoas! (Eldrin ouviu, mas não informou Tristan nem Soren depois – Soren sentiu a presença, mas Tristan não)</td><td contenteditable="false">Serpente Alada</td><td contenteditable="false">Zhentarim</td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Eldrin</td><td contenteditable="false">A mulher (do cervo): Tentei salvar uma pessoa e acabei ficando presa pelo poder do nosso próprio povo sem conseguir voltar para Torntrad. Obrigado por terem libertado meu espírito, tentarei chegar à forma astral. (Eldrin ouviu, mas não informou Tristan nem Soren depois – Soren sentiu a presença, mas Tristan não)</td><td contenteditable="false">Cervo</td><td contenteditable="false">?</td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Soren Tristan Eldrin</td><td contenteditable="false">O homem imponente (da coroa): Conseguimos seguir os Zhentarim até aqui e eliminar todos, mas ficamos presos nesse labirinto mágico. As tropas da nossa aliança conseguiram derrubar muitos Zhentarim, mas a preço alto. Espero que os demais lordes consigam pôr um fim nisso. Obrigado por libertarem meu espírito. (Soren e Eldrin ouviram e Soren informou Tristan depois – Tristan sentiu a presença)</td><td contenteditable="false">Coroa</td><td contenteditable="false">?</td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+                <tr><td contenteditable="false">Eldrin</td><td contenteditable="false">Cespemar se manifesta novamente, mas desta vez não como goblinóide, mas sim como changeling (muito similar ao Soren fisicamente).</td><td contenteditable="false">Ring of Bhaal</td><td contenteditable="false">Bhaal's Cult</td><td class="actions"><div class="row-actions"><button class="btn" data-row-edit>Editar</button><button class="btn danger" data-row-remove>Remover</button></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </section>
+<section class="block" id="anotacoes-section">
+  <details class="section" open>
+    <summary><h2 id="anotacoes"><i class="fas fa-clipboard-list"></i> Anotações da Sessão</h2></summary>
+    <div class="controls">
+      <input type="search" placeholder="Buscar nesta seção..." data-table="anotacoes-tbl">
+      <button class="btn small" data-edit-toggle="anotacoes-tbl"><i class="fas fa-edit"></i> Modo Edição</button>
+      <button class="btn small" data-add-toggle="anotacoes"><i class="fas fa-plus"></i> Adicionar</button>
+      <button class="btn small danger" data-reset="anotacoes"><i class="fas fa-undo"></i> Resetar</button>
+    </div>
+    <div class="inline-form" data-form="anotacoes">
+      <input placeholder="Sessão" />
+      <input placeholder="Data" />
+      <textarea placeholder="Notas"></textarea>
+      <button class="btn primary" data-form-submit="anotacoes">Salvar</button>
+      <button class="btn" data-form-cancel>Cancelar</button>
+    </div>
+    <div class="table-wrap">
+      <table class="grid" id="anotacoes-tbl" data-sortable="true">
+        <thead>
+          <tr><th>Sessão</th><th>Data</th><th>Notas</th><th class="actions">Ações</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </details>
+</section>
+<section class="block" id="galeria-section" hidden>
+        <details class="section" open>
+          <summary><h2 id="galeria"><i class="fas fa-images"></i> Galeria</h2></summary>
+          <div class="controls">
+            <select id="albumSelect" title="Álbum"></select>
+            <button class="btn small" id="newAlbumBtn"><i class="fa-solid fa-folder-plus"></i> Novo álbum</button>
+            <button class="btn small danger" id="deleteAlbumBtn"><i class="fa-solid fa-folder-minus"></i> Excluir álbum</button>
+            <input type="search" placeholder="Buscar..." data-gallery-search>
+            <input type="file" id="galleryInput" accept="image/*" multiple style="display:none">
+            <button class="btn small" data-gallery-upload><i class="fas fa-upload"></i> Enviar</button>
+            <button class="btn small" data-gallery-refresh><i class="fas fa-rotate"></i> Atualizar</button>
+          </div>
+          <div class="gallery-grid" id="galleryGrid"></div>
+          <p class="muted" style="margin:8px 16px 16px">Imagens são redimensionadas até 1920px e salvas em WebP + miniaturas.</p>
+        </details>
+      </section></div>
+  
+      
+    
+    </main>
+  <div class="snackbar" id="snackbar">Item removido. <button class="btn" id="undoBtn">Desfazer</button></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+      // Carrega o estado inteiro da campanha do servidor
+  async function loadCampaign() {
+    const resp = await fetch("/api/campaign");
+    const json = await resp.json();
+    if (!json.ok) throw new Error("Falha ao carregar campanha");
+    return json.data; // objeto JS
+  }
+
+  // Salva (sobrescreve) o estado inteiro no servidor
+  // Dica: use um debounce de ~800ms ao chamar após edições frequentes.
+  let saveTimer = null;
+  function saveCampaignDebounced(data) {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => _putCampaign(data), 800);
+  }
+
+  
+async function _putCampaign(payload){
+  try{
+    const r = await fetch('/api/campaign', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const j = await r.json().catch(()=>({}));
+    if(!r.ok){ throw new Error(j?.error || r.statusText); }
+    localStorage.setItem(LS_LASTSAVED, String(Date.now()));
+    try{ localStorage.removeItem(LS_OUTBOX); }catch{}
+    console.log('[save] PUT ok');
+  }catch(err){
+    console.error('[save] PUT falhou, enfileirando outbox', err?.message||err);
+    try{ localStorage.setItem(LS_OUTBOX, JSON.stringify(payload)); }catch{}
+  }
+}
+
+async function save(){
+  const mainEl = document.querySelector('main');
+  if (mainEl){ localStorage.setItem(LS_HTML, mainEl.innerHTML); }
+  localStorage.setItem(LS_THEME, document.documentElement.getAttribute('data-theme') || 'dark');
+  localStorage.setItem(LS_NOTES, document.getElementById('quickNotes')?.value || '');
+  localStorage.setItem(LS_SESSION, document.getElementById('sessionCount')?.textContent || '1');
+
+  if (typeof updateStats === 'function') updateStats();
+  if (typeof fixHeaderGutter === 'function') fixHeaderGutter();
+
+  const payload = buildState();
+  console.log('[save] preparando envio');
+
+  // 1) tenta via socket
+  let sent = false;
+  if (socket && socket.connected) {
+    socket.emit('state:update', payload);
+    console.log('[save] emit via socket');
+    sent = true;
+  }
+
+  // 2) fallback: salva direto no SQLite via API
+  if (!sent) {
+    try {
+      const r = await fetch('/api/campaign', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const j = await r.json();
+      console.log('[save] PUT /api/campaign', j);
+    } catch (err) {
+      console.error('[save] falha no PUT', err);
+    }
+  }
+}
+    // ==== Keys & helpers ====
+    const LS_PREFIX = 'campanha.v6.4';
+    const LS_HTML = LS_PREFIX + '.html';
+// --- Cache schema/migration guard ---
+  const LS_SCHEMA = LS_PREFIX + '.schema';
+  const HTML_SCHEMA = 'v2'; // bump when markup/state changes
+
+  if (localStorage.getItem(LS_SCHEMA) !== HTML_SCHEMA) {
+    localStorage.removeItem(LS_HTML);
+    localStorage.setItem(LS_SCHEMA, HTML_SCHEMA);
+  }
+    const LS_THEME = LS_PREFIX + '.theme';
+    const LS_NOTES = LS_PREFIX + '.notes';
+    const LS_SESSION = LS_PREFIX + '.session';
+    const LS_OUTBOX = LS_PREFIX + '.outbox';
+    const LS_LASTSAVED = LS_PREFIX + '.lastSaved';
+
+    const LS_NEXT = LS_PREFIX + '.nextSession';
+
+    function fmtNextSession(iso){
+      if(!iso) return 'Próx. sessão: —';
+      try{
+        const d = new Date(iso);
+        const p1 = new Intl.DateTimeFormat('pt-BR', { weekday:'short', day:'2-digit', month:'short' }).format(d);
+        const p2 = new Intl.DateTimeFormat('pt-BR', { hour:'2-digit', minute:'2-digit' }).format(d);
+        return `Próx. sessão: ${p1} · ${p2}`;
+      }catch{ return 'Próx. sessão: —'; }
+    }
+    function updateNextSessionUI(iso){
+      const chip = document.getElementById('nextSessionChip');
+      const txt  = document.getElementById('nextSessionText');
+      if(!chip || !txt) return;
+      chip.dataset.iso = iso || '';
+      txt.textContent = fmtNextSession(iso);
+      try{ localStorage.setItem(LS_NEXT, iso || ''); }catch{}
+    }
+
+
+    let suppressSync = false; // prevent loops when applying remote state
+    let socket = null;
+    // Inicialização: conecta socket e carrega estado do servidor
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    // conecta Socket.IO
+    socket = io();
+window.socket = socket;
+    socket.on('connect', () => console.log('[socket] conectado', socket.id));
+    socket.on('connect_error', (err) => console.error('[socket] erro', err));
+
+    // recebe estado do servidor e aplica no DOM
+    socket.on('state:broadcast', (data) => {
+      console.log('[socket] broadcast recebido');
+      if (typeof applyState === 'function') applyState(data);
+    });
+try {
+  if (socket && socket.off) socket.off('jukebox:cmd'); // avoid duplicates
+  if (socket && socket.on){
+    socket.on('jukebox:cmd', (msg) => {
+      if (!msg) return;
+      switch (msg.type) {
+        case 'play':
+          if (typeof msg.index === 'number' && typeof loadTrack === 'function' && msg.index!==JB.index) loadTrack(msg.index);
+          if (window.JB && JB.unlocked && typeof play === 'function') play();
+          break;
+        case 'pause':
+          if (typeof pause === 'function') pause();
+          break;
+        case 'next':
+          if (typeof next === 'function') next();
+          break;
+        case 'prev':
+          if (typeof prev === 'function') prev();
+          break;
+        case 'volume':
+          if (typeof msg.volume === 'number' && typeof setVolume === 'function') setVolume(msg.volume);
+          break;
+        case 'queue':
+          if (msg.data && window.JB) {
+            window.__jbSuppressSync = true;
+            try{
+              JB.queue   = Array.isArray(msg.data.queue) ? msg.data.queue : JB.queue;
+              JB.index   = Number.isInteger(msg.data.index) ? msg.data.index : JB.index;
+              JB.playing = !!msg.data.playing;
+              if (typeof msg.data.volume === 'number') {
+                JB.volume = msg.data.volume;
+                try { document.getElementById('jbVol').value = String(JB.volume); } catch {}
+                if (typeof setVolume === 'function') setVolume(JB.volume);
+              }
+              if (typeof render === 'function') render();
+            } finally {
+              setTimeout(() => (window.__jbSuppressSync = false), 50);
+            }
+          }
+          break;
+      }
+    });
+  }
+} catch (e) { console.warn('Falha ao anexar listener do Jukebox:', e); }
+
+
+    // força 1º render com o estado persistido
+    const resp = await fetch('/api/campaign');
+    const json = await resp.json();
+    if (json?.ok && json.data) {
+      console.log('[api] estado inicial aplicado');
+      if (typeof applyState === 'function') applyState(json.data);
+    }
+  } catch (e) {
+    console.error('Falha ao inicializar realtime:', e);
+  }
+});
+    const debounce=(fn,wait=500)=>{let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),wait)}};
+    async function flushOutbox(){
+      try{
+        const queued = localStorage.getItem(LS_OUTBOX);
+        if(!queued) return;
+        const payload = JSON.parse(queued);
+        const r = await fetch('/api/campaign', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          keepalive: true
+        });
+        if(r.ok){
+          localStorage.removeItem(LS_OUTBOX);
+          localStorage.setItem(LS_LASTSAVED, String(Date.now()));
+          console.log('[outbox] sincronizado');
+        }else{
+          console.warn('[outbox] ainda pendente', await r.text().catch(()=>r.statusText));
+        }
+      }catch(err){ console.warn('[outbox] erro', err); }
+    }
+    window.addEventListener('online', flushOutbox);
+
+    const normalize=(s)=>{try{return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}catch(e){return (s||'').toLowerCase()}};
+    const $=(sel,root=document)=>root.querySelector(sel);
+const $all=(sel,root=document)=>Array.from(root.querySelectorAll(sel));
+// normaliza strings para comparação case/acentos independente
+const norm = s => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+const isAcoes = h => norm(h) === 'acoes';
+
+// === Added helpers ===
+function fixHeaderGutter(){
+  $all('.table-wrap').forEach(wrap=>{
+    const sbw = wrap.offsetWidth - wrap.clientWidth;
+    wrap.style.setProperty('--sbw', (sbw>0?sbw:0)+'px');
+  });
+}
+function ensureEditablePartyLevels(){
+  $all('.party-tracker .member-level').forEach(el=>{
+    if(!el.hasAttribute('contenteditable')) el.setAttribute('contenteditable','true');
+    el.setAttribute('spellcheck','false'); el.setAttribute('tabindex','0');
+  });
+}
+const actionsHTML = () => (
+  '<div class="row-actions">'+
+    '<button class="btn icon-btn" data-row-edit title="Editar" aria-label="Editar">'+
+      '<i class="fa-solid fa-pen-to-square"></i>'+
+    '</button>'+
+    '<button class="btn icon-btn danger" data-row-remove title="Remover" aria-label="Remover">'+
+      '<i class="fa-solid fa-trash"></i>'+
+    '</button>'+
+  '</div>'
+);
+
+// Ícone/label para tipo de quest
+function renderQuestType(tipo){
+  const t = (tipo||'Side').toLowerCase();
+  const isMain = t.startsWith('main');
+  const icon = isMain ? 'fa-dragon' : 'fa-feather';
+  const label = isMain ? 'Main' : 'Side';
+  return `<span class="quest-type ${isMain?'main':'side'}"><i class="fa-solid ${icon}"></i> ${label}</span>`;
+}
+
+function upgradeActionButtons(){
+  $all('.row-actions').forEach(box => {
+    const edit = box.querySelector('[data-row-edit]');
+    const del  = box.querySelector('[data-row-remove]');
+    if (edit && !edit.classList.contains('icon-btn')) {
+      edit.classList.add('icon-btn');
+      edit.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
+      edit.title = 'Editar'; edit.setAttribute('aria-label','Editar');
+    }
+    if (del && !del.classList.contains('icon-btn')) {
+      del.classList.add('icon-btn','danger');
+      del.innerHTML = '<i class="fa-solid fa-trash"></i>';
+      del.title = 'Remover'; del.setAttribute('aria-label','Remover');
+    }
+  });
+}
+
+    // ==== State build/apply ====
+    const tableToJSON=(tbl)=>{const headers=$all('thead th',tbl).map(th=>th.innerText.trim()).filter(h => !isAcoes(h));const rows=$all('tbody tr',tbl).map(tr=>{const obj={};$all('td',tr).forEach((td,i)=>{if(headers[i]) obj[headers[i]]=td.innerHTML.replace(/<br>/g,'\n').trim()});return obj});return {id:tbl.id,headers,rows}};
+    const listToJSON=(ul)=>({id:ul.id,items:$all('li .text',ul).map(x=>x.innerText)});
+    
+function buildState(){
+  const tables = $all('table.grid').map(tableToJSON);
+  const lists  = $all('ul.bullets').map(listToJSON);
+  const notes   = $('#quickNotes')?.value || '';
+  const session = $('#sessionCount')?.textContent || '1';
+  const theme   = 'dark';
+  const nextSession = document.getElementById('nextSessionChip')?.dataset?.iso || '';
+
+  return { tables, lists, notes, session, theme, nextSession };
+}
+
+    function applyState(data){
+  try{
+    if (data?.jukebox && window.JB) {
+      window.__jbSuppressSync = true;
+      JB.queue   = Array.isArray(data.jukebox.queue) ? data.jukebox.queue : (JB.queue || []);
+      JB.index   = Number.isInteger(data.jukebox.index) ? data.jukebox.index : (JB.index ?? -1);
+      JB.playing = !!data.jukebox.playing;
+      if (typeof data.jukebox.volume === 'number') {
+        JB.volume = data.jukebox.volume;
+        try { document.getElementById('jbVol').value = String(JB.volume); } catch{}
+        if (typeof setVolume === 'function') setVolume(JB.volume);
+      }
+      if (typeof render === 'function') render();
+    }
+  } finally {
+    setTimeout(() => (window.__jbSuppressSync = false), 50);
+  }
+
+  // --- Guard: do not overwrite local DOM if server sent empty state ---
+  try {
+    const hasRows = Array.isArray(data?.tables) && data.tables.some(t => Array.isArray(t.rows) && t.rows.length);
+    if (!hasRows) {
+      console.warn('[applyState] Estado remoto vazio — preservando DOM local');
+      return;
+    }
+  } catch (_) { /* keep going if data malformed */ }
+
+    if (!data || typeof data !== 'object') return;
+    suppressSync = true;
+    try {
+            // Sessão
+      const sessEl = document.getElementById('sessionCount');
+      if (sessEl && data.session) {
+        sessEl.textContent = String(data.session);
+      }
+
+      // Notas
+      // Próxima sessão
+      if (data.nextSession) { updateNextSessionUI(data.nextSession); }
+
+      const notesEl = document.getElementById('quickNotes');
+      if (notesEl) notesEl.value = data.notes || '';
+
+      // Tabelas
+      (data.tables || []).forEach(t => {
+        const tbl = document.getElementById(t.id);
+        if (!tbl) return;
+        const tbody = tbl.querySelector('tbody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+
+        (t.rows || []).forEach(row => {
+          const tr = document.createElement('tr');
+
+          (t.headers || []).forEach(h => {
+            if (isAcoes(h)) return;
+            const td = document.createElement('td');
+            td.setAttribute('contenteditable', 'false');
+            // preserva quebras de linha
+            td.innerHTML = (row[h] || '').replace(/\n/g, '<br>');
+            tr.appendChild(td);
+          });
+
+          const tdActions = document.createElement('td');
+          tdActions.className = 'actions';
+          tdActions.innerHTML = actionsHTML();
+          tr.appendChild(tdActions);
+
+          tbody.appendChild(tr);
+        });
+
+        // reanexa sort na tabela
+        if (typeof attachSorting === 'function') attachSorting(tbl);
+      });
+
+      // Listas (ex.: Missões)
+      (data.lists || []).forEach(l => {
+        const ul = document.getElementById(l.id);
+        if (!ul) return;
+        ul.innerHTML = '';
+        (l.items || []).forEach(text => {
+          const li = document.createElement('li');
+          li.innerHTML = `<div class="text" contenteditable="false">${text}</div>${actionsHTML()}`;
+          ul.appendChild(li);
+        });
+      });
+
+      // Atualiza estatísticas e visual
+      if (typeof upgradeActionButtons === 'function') upgradeActionButtons();
+      if (typeof updateStats === 'function') updateStats();
+      if (typeof fixHeaderGutter === 'function') fixHeaderGutter();
+
+      console.log('[applyState] DOM atualizado a partir do servidor');
+    } finally {
+      // solta o lock depois de aplicar para evitar loops
+      setTimeout(() => (suppressSync = false), 50);
+    }
+  }
+    const emitUpdateDebounced=debounce(()=>{if(suppressSync||!socket) return; socket.emit('state:update',buildState())},400);
+
+    // ==== Save/Load ====
+    function saveUIOnly(){
+  const mainEl=$('main'); if(mainEl){localStorage.setItem(LS_HTML,mainEl.innerHTML)}
+  localStorage.setItem(LS_THEME,document.documentElement.getAttribute('data-theme')||'dark');
+  localStorage.setItem(LS_NOTES,$('#quickNotes')?.value||'');
+  localStorage.setItem(LS_SESSION,$('#sessionCount')?.textContent||'1');
+  updateStats();
+  fixHeaderGutter();            // <-- adicionada
+  emitUpdateDebounced();
+}
+    function load(){const html=localStorage.getItem(LS_HTML); if(html){$('main').innerHTML=html}const theme=localStorage.getItem(LS_THEME); if(theme){document.documentElement.setAttribute('data-theme',theme)}const notes=localStorage.getItem(LS_NOTES); if(notes&&$('#quickNotes')) $('#quickNotes').value=notes;const sess=localStorage.getItem(LS_SESSION); if(sess) $('#sessionCount').textContent=sess}
+
+    // ==== Sorting ====
+    function attachSorting(tbl){const ths=$all('thead th',tbl);ths.forEach((th,idx)=>{if(th.classList.contains('actions')) return;th.addEventListener('click',()=>{const dir=th.classList.contains('sort-asc')?'desc':'asc';ths.forEach(t=>t.classList.remove('sort-asc','sort-desc'));th.classList.add(dir==='asc'?'sort-asc':'sort-desc');const rows=$all('tbody tr',tbl);rows.sort((a,b)=>{const ta=a.children[idx].innerText.trim(); const tb=b.children[idx].innerText.trim(); return dir==='asc'?ta.localeCompare(tb):tb.localeCompare(ta)});const tbody=$('tbody',tbl);rows.forEach(r=>tbody.appendChild(r));save()})})}
+
+    // ==== Snackbar / Undo ====
+    let undoStack=[];function showSnackbar(){const sb=$('#snackbar'); if(!sb) return; sb.style.display='flex'; clearTimeout(sb._t); sb._t=setTimeout(()=>sb.style.display='none',5000)}
+    $('#undoBtn')?.addEventListener('click',()=>{const item=undoStack.pop(); if(!item) return; if(item.type==='row'){item.tbody.insertBefore(item.node,item.nextSibling)}else if(item.type==='li'){item.ul.insertBefore(item.node,item.nextSibling)}save(); $('#snackbar').style.display='none'});
+
+
+// ==== Add missing form helpers (toggleForm & submitForm) ====
+function toggleForm(section){
+  const form = document.querySelector(`.inline-form[data-form="${section}"]`);
+  if(!form) return;
+  form.style.display = (form.style.display === 'flex') ? 'none' : 'flex';
+}
+
+function submitForm(section){
+  const form = document.querySelector(`.inline-form[data-form="${section}"]`);
+  if(!form) return;
+
+  // Map targets
+  const targets = {
+    detalhes: '#detalhes-tbl tbody',
+    lugares:  '#lugares-tbl tbody',
+    npcs:     '#npcs-tbl tbody',
+    eventos:  '#eventos-tbl tbody',
+    itens:    '#itens-tbl tbody', anotacoes: '#anotacoes-tbl tbody'
+  };
+  const targetSel = targets[section];
+  if(!targetSel) return;
+  const target = document.querySelector(targetSel);
+  if(!target) return;
+
+  // Helper: clear and close
+  const done = () => {
+    form.querySelectorAll('input, textarea').forEach(el => el.value = '');
+    const sel = form.querySelector('select');
+    if(sel) sel.selectedIndex = 0;
+    form.style.display = 'none';
+    if (typeof updateStats === 'function') updateStats();
+    if (typeof fixHeaderGutter === 'function') fixHeaderGutter();
+    if (typeof upgradeActionButtons === 'function') upgradeActionButtons();
+    if (typeof save === 'function') save();
+  };
+
+  
+if(section === 'anotacoes'){
+  const sessao = (form.querySelector('input[placeholder="Sessão"]')?.value || '').trim();
+  const data   = (form.querySelector('input[placeholder="Data"]')?.value || '').trim();
+  const notas  = (form.querySelector('textarea[placeholder="Notas"]')?.value || '').trim();
+  const tr = document.createElement('tr');
+  [sessao, data, notas].forEach(val => {
+    const td = document.createElement('td');
+    td.textContent = val; td.setAttribute('contenteditable','false');
+    tr.appendChild(td);
+  });
+  const tdActions = document.createElement('td');
+  tdActions.className = 'actions';
+  tdActions.innerHTML = actionsHTML();
+  tr.appendChild(tdActions);
+  target.appendChild(tr);
+  return done();
+}
+
+
+  // Build table row per section
+  const tr = document.createElement('tr');
+
+  if(section === 'detalhes'){
+    const [who, info, symbol, faction] = [
+      form.querySelector('input[placeholder="Quem sabe a info?"]')?.value || '',
+      form.querySelector('textarea[placeholder="Informação"]')?.value || '',
+      form.querySelector('input[placeholder="Símbolo"]')?.value || '',
+      form.querySelector('input[placeholder="Facção"]')?.value || ''
+    ];
+    [who, info, symbol, faction].forEach(val => {
+      const td = document.createElement('td');
+      td.textContent = val;
+      td.setAttribute('contenteditable', 'false');
+      tr.appendChild(td);
+    });
+  }
+  else if(section === 'lugares'){
+    const nome = form.querySelector('input[placeholder="Local"]')?.value || '';
+    const visitado = form.querySelector('select')?.value || '—';
+    [nome, visitado].forEach(val => {
+      const td = document.createElement('td');
+      td.textContent = val;
+      td.setAttribute('contenteditable', 'false');
+      tr.appendChild(td);
+    });
+  }
+  else if(section === 'npcs'){
+    const nome = form.querySelector('input[placeholder="Nome"]')?.value || '';
+    const detalhe = form.querySelector('input[placeholder="Detalhe"]')?.value || '';
+    const quest = form.querySelector('input[placeholder="Quest"]')?.value || '';
+    const localidade = form.querySelector('input[placeholder="Localidade"]')?.value || '';
+    const sabe = form.querySelector('textarea[placeholder="O que sabe?"]')?.value || '';
+    const relev = form.querySelector('select')?.value || 'Não';
+
+    // 5 primeiras colunas como texto
+    [nome, detalhe, quest, localidade, sabe].forEach(val => {
+      const td = document.createElement('td');
+      td.textContent = val;
+      td.setAttribute('contenteditable', 'false');
+      tr.appendChild(td);
+    });
+
+    // Coluna de relevância com <span class="tag ...">
+    const tdRel = document.createElement('td');
+    tdRel.setAttribute('data-rel', relev);
+    tdRel.setAttribute('contenteditable', 'false');
+    const map = { 'Sim': 'yes', 'Talvez': 'maybe', 'Não': 'no' };
+    const cls = map[relev] || 'no';
+    const span = document.createElement('span');
+    span.className = `tag ${cls}`;
+    span.textContent = relev;
+    tdRel.appendChild(span);
+    tr.appendChild(tdRel);
+  }
+  else if(section === 'eventos'){
+    const tipo = form.querySelector('select[data-quest-type]')?.value || 'Side';
+    const titulo = form.querySelector('input[placeholder="Título da Quest"]')?.value || '';
+    const notas = form.querySelector('textarea[placeholder="Notas"]')?.value || '';
+
+    // Tipo
+    const tdTipo = document.createElement('td');
+    tdTipo.setAttribute('data-quest-type', tipo);
+    tdTipo.setAttribute('contenteditable','false');
+    tdTipo.innerHTML = renderQuestType(tipo);
+    tr.appendChild(tdTipo);
+
+    // Quest com steps
+    const tdQuest = document.createElement('td');
+    tdQuest.setAttribute('contenteditable','false');
+    tdQuest.innerHTML = `<div class="quest-row">
+        <button class="btn icon-btn quest-toggle" title="Steps"><i class="fa-solid fa-caret-down"></i></button>
+        <div class="quest-title">${titulo}</div>
+        <div class="quest-steps" hidden>
+          <ul class="steps"></ul>
+          <div class="step-controls">
+            <input class="step-input" placeholder="Novo passo..." />
+            <button class="btn small add-step"><i class="fa-solid fa-plus"></i></button>
+          </div>
+        </div>
+      </div>`;
+    tr.appendChild(tdQuest);
+
+    // Notas
+    const tdNotas = document.createElement('td');
+    tdNotas.setAttribute('contenteditable','false');
+    tdNotas.innerHTML = notas.replace(/\n/g,'<br>');
+    tr.appendChild(tdNotas);
+  ;
+  }
+  else if(section === 'itens'){
+    const item = form.querySelector('input[placeholder="Item"]')?.value || '';
+    const tipo = form.querySelector('input[placeholder="Tipo"]')?.value || '';
+    const dono = form.querySelector('input[placeholder="Dono"]')?.value || '';
+    const local = form.querySelector('input[placeholder="Local"]')?.value || '';
+    const notas = form.querySelector('textarea[placeholder="Notas"]')?.value || '';
+    [item, tipo, dono, local, notas].forEach(val => {
+      const td = document.createElement('td');
+      td.textContent = val;
+      td.setAttribute('contenteditable', 'false');
+      tr.appendChild(td);
+    });
+  } else {
+    // Fallback genérico: cria colunas para todos os inputs/textarea/select, exceto botões
+    form.querySelectorAll('input, textarea, select').forEach(inp => {
+      const td = document.createElement('td');
+      td.textContent = (inp.tagName === 'SELECT') ? inp.value : (inp.value || '');
+      td.setAttribute('contenteditable','false');
+      tr.appendChild(td);
+    });
+  }
+
+  // Coluna de ações
+  const tdActions = document.createElement('td');
+  tdActions.className = 'actions';
+  tdActions.innerHTML = actionsHTML();
+  tr.appendChild(tdActions);
+
+  target.appendChild(tr);
+  return done();
+}
+// ==== end helpers ====
+
+// ==== Stats updater ====
+function updateStats(){
+  const npcCount = document.querySelectorAll('#npcs-tbl tbody tr').length;
+  const locationCount = document.querySelectorAll('#lugares-tbl tbody tr').length;
+  const questCount = document.querySelectorAll('#eventos-tbl tbody tr').length;
+  const itemCount = document.querySelectorAll('#itens-tbl tbody tr').length;
+  const set = (id,val) => { const el=document.getElementById(id); if(el) el.textContent=val; };
+  set('npcCount', npcCount);
+  set('locationCount', locationCount);
+  set('questCount', questCount);
+  set('itemCount', itemCount);
+}
+// ==== end stats ====
+
+// run once on load
+document.addEventListener('DOMContentLoaded',()=>{
+  // Next session: init & handlers
+  try{ const iso = localStorage.getItem(LS_NEXT); if(iso){ updateNextSessionUI(iso); } }catch{}
+  const chip = document.getElementById('nextSessionChip');
+  const pop  = document.getElementById('nextSessionPop');
+  const inp  = document.getElementById('nextSessionInput');
+  const openPop = () => { if(!pop) return; pop.style.display='block'; pop.setAttribute('aria-hidden','false'); inp.value = (chip.dataset.iso||'').slice(0,16); inp.focus(); };
+  const closePop= () => { if(!pop) return; pop.style.display='none'; pop.setAttribute('aria-hidden','true'); };
+
+  chip?.addEventListener('click', (e)=>{ e.stopPropagation(); openPop(); });
+  document.getElementById('nextSessionSave')?.addEventListener('click', ()=>{
+    const iso = inp.value ? new Date(inp.value).toISOString() : '';
+    updateNextSessionUI(iso);
+    if (typeof save === 'function') save();
+    closePop();
+  });
+  document.getElementById('nextSessionCancel')?.addEventListener('click', ()=> closePop());
+  document.getElementById('nextSessionClear')?.addEventListener('click', ()=>{
+    updateNextSessionUI('');
+    if (typeof save === 'function') save();
+    closePop();
+  });
+  document.addEventListener('click', (e)=>{
+    if (!pop || pop.getAttribute('aria-hidden')==='true') return;
+    if (!pop.contains(e.target) && e.target !== chip) closePop();
+  });
+
+  if(typeof updateStats==='function') updateStats();
+  if(typeof upgradeActionButtons==='function') upgradeActionButtons();
+  document.querySelectorAll('table.grid').forEach(tbl=>{
+    if(typeof attachSorting==='function') attachSorting(tbl);
+  });
+});
+
+
+
+// ==== Stats updater ====
+if (typeof updateStats !== 'function') {
+  function updateStats(){
+    const bySelCount = (sel) => document.querySelectorAll(sel).length;
+    const npcs = bySelCount('#npcs-tbl tbody tr');
+    const locais = bySelCount('#lugares-tbl tbody tr');
+    const missoes = bySelCount('#eventos-tbl tbody tr');
+    const itens = bySelCount('#itens-tbl tbody tr');
+
+    const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = String(val); };
+    set('npcCount', npcs);
+    set('locationCount', locais);
+    set('questCount', missoes);
+    set('itemCount', itens);
+  }
+}
+// ==== end stats ====
+
+// ==== Initializer on load ====
+window.addEventListener('DOMContentLoaded', () => {
+  // attach sorting to existing tables (if not already attached)
+  document.querySelectorAll('table.grid').forEach(tbl => {
+    try { if (typeof attachSorting === 'function') attachSorting(tbl); } catch(e){}
+  });
+  try { if (typeof upgradeActionButtons === 'function') upgradeActionButtons(); } catch(e){}
+  try { if (typeof ensureEditablePartyLevels === 'function') ensureEditablePartyLevels(); } catch(e){}
+  try { if (typeof updateStats === 'function') updateStats(); } catch(e){}
+  try { if (typeof fixHeaderGutter === 'function') fixHeaderGutter(); } catch(e){}
+});
+// ==== Event delegation — bloco único e válido ====
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('button');
+  if (!btn) return;
+
+  // --- Dados rápidos (animação + crítico/falha) ---
+  if (btn.classList.contains('dice-btn')) {
+    const n = parseInt(btn.dataset.dice || '20', 10) || 20;
+    const resEl = document.getElementById('diceResult');
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (resEl && resEl.dataset.rolling === '1') return; // evita spam
+
+    const finish = (roll) => {
+      if (resEl) {
+        resEl.textContent = `d${n}: ${roll}`;
+        resEl.classList.remove('rolling', 'crit-max', 'crit-min');
+        delete resEl.dataset.rolling;
+      }
+      btn.classList.remove('rolling', 'crit-max', 'crit-min');
+
+      // efeitos de crítico/falha
+      if (roll === n || roll === 1) {
+        const cls = (roll === n) ? 'crit-max' : 'crit-min';
+        btn.classList.add(cls);
+        if (resEl) resEl.classList.add(cls);
+        setTimeout(() => {
+          btn.classList.remove(cls);
+          if (resEl) resEl.classList.remove(cls);
+        }, 900);
+      }
+    };
+
+    if (reduceMotion) { finish(1 + Math.floor(Math.random() * n)); return; }
+
+    if (resEl) { resEl.dataset.rolling = '1'; resEl.classList.add('rolling'); }
+    btn.classList.add('rolling');
+
+    const duration = 700;
+    const t0 = performance.now();
+    let rafId = 0;
+
+    const tick = () => {
+      const t = performance.now() - t0;
+      if (t < duration) {
+        const temp = 1 + Math.floor(Math.random() * n);
+        if (resEl) resEl.textContent = `d${n}: ${temp}`;
+        rafId = requestAnimationFrame(tick);
+      } else {
+        cancelAnimationFrame(rafId);
+        finish(1 + Math.floor(Math.random() * n));
+      }
+    };
+    rafId = requestAnimationFrame(tick);
+    return;
+  }
+
+  // --- Header ---
+  
+  if (btn.id === 'exportJson') {
+    const data = typeof buildState === 'function' ? buildState() : null;
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'campanha-data.json'; a.click();
+    return;
+  }
+  if (btn.id === 'importJson') {
+    const inp = document.createElement('input');
+    inp.type = 'file'; inp.accept = '.json,application/json';
+    inp.onchange = e => {
+      const f = e.target.files[0]; if (!f) return;
+      const r = new FileReader();
+      r.onload = () => {
+        try { const data = JSON.parse(r.result); if (typeof applyState==='function') applyState(data); if (typeof save==='function') save(); alert('Importado com sucesso!'); }
+        catch (err) { alert('Falha ao importar: ' + err.message); }
+      };
+      r.readAsText(f);
+    };
+    inp.click();
+    return;
+  }
+  if (btn.id === 'resetAll') {
+    if (confirm('Resetar tudo para a versão padrão?')) {
+      localStorage.removeItem(LS_HTML);
+      /* theme removed */
+      localStorage.removeItem(LS_NOTES);
+      localStorage.removeItem(LS_SESSION);
+      location.reload();
+    }
+    return;
+  }
+
+  // --- Inline controls / formulários ---
+  if (btn.hasAttribute('data-form-cancel')) { const box=btn.closest('.inline-form'); if (box) box.style.display='none'; return; }
+
+  if (btn.hasAttribute('data-edit-toggle')) {
+    const id = btn.getAttribute('data-edit-toggle');
+    const editing = btn.classList.toggle('active');
+    document.querySelectorAll('#' + id + ' tbody td:not(.actions)')
+      .forEach(td => td.setAttribute('contenteditable', editing ? 'true' : 'false'));
+    btn.innerHTML = editing ? '<i class="fas fa-lock"></i> Bloquear' : '<i class="fas fa-edit"></i> Modo Edição';
+    if (!editing && typeof save==='function') save();
+    return;
+  }
+
+  if (btn.hasAttribute('data-add-toggle')) { if (typeof toggleForm==='function') toggleForm(btn.getAttribute('data-add-toggle')); return; }
+  if (btn.hasAttribute('data-form-submit')) { if (typeof submitForm==='function') submitForm(btn.getAttribute('data-form-submit')); return; }
+
+  if (btn.hasAttribute('data-export-csv')) {
+    const id = btn.getAttribute('data-export-csv');
+    const tbl = document.getElementById(id); if (!tbl) return;
+    let out = '';
+    const headers = Array.from(tbl.querySelectorAll('thead th')).map(th => th.innerText.trim()).join(',');
+    out += headers + '\n';
+    tbl.querySelectorAll('tbody tr').forEach(tr => {
+      const tds = Array.from(tr.querySelectorAll('td'));
+      const cols = tds.slice(0, tds.length - 1).map(td => `"${td.innerText.replace(/"/g,'""')}"`).join(',');
+      out += cols + '\n';
+    });
+    const blob = new Blob([out], { type: 'text/csv' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = id + '.csv'; a.click();
+    return;
+  }
+
+  if (btn.hasAttribute('data-reset')) {
+    const sec = btn.getAttribute('data-reset');
+    if (!confirm('Resetar esta seção?')) return;
+    if (['detalhes','lugares','npcs','eventos','itens','anotacoes'].includes(sec)) {
+  const map = { detalhes:'#detalhes-tbl tbody', lugares:'#lugares-tbl tbody', npcs:'#npcs-tbl tbody', eventos:'#eventos-tbl tbody', itens:'#itens-tbl tbody', anotacoes:'#anotacoes-tbl tbody' };
+  const sel = map[sec]; if (sel) { const el = document.querySelector(sel); if (el) el.innerHTML=''; }
+}
+if (typeof save==='function') save();
+    return;
+  }
+
+  if (btn.hasAttribute('data-row-remove')) {
+    const tr = e.target.closest('tr'); const li = e.target.closest('li');
+    if (tr) { const tb = tr.parentElement; const next = tr.nextSibling; undoStack.push({type:'row', node:tr, tbody:tb, nextSibling:next}); tr.remove(); if (typeof save==='function') save(); if (typeof showSnackbar==='function') showSnackbar(); return; }
+    if (li) { const ul = li.parentElement; const next = li.nextSibling; undoStack.push({type:'li', node:li, ul, nextSibling:next}); li.remove(); if (typeof save==='function') save(); if (typeof showSnackbar==='function') showSnackbar(); return; }
+  }
+
+  if (btn.hasAttribute('data-row-edit')) {
+  const tr = e.target.closest('tr');
+  if (tr) {
+    const cells = tr.querySelectorAll('td:not(.actions)');
+    const willEdit = cells[0]?.getAttribute('contenteditable') !== 'true';
+
+    cells.forEach(td => td.setAttribute('contenteditable', willEdit ? 'true' : 'false'));
+
+    // mantém ícones (lápis ↔ check) em vez de texto
+    btn.innerHTML = willEdit
+      ? '<i class="fa-solid fa-check"></i>'
+      : '<i class="fa-solid fa-pen-to-square"></i>';
+    btn.setAttribute('title', willEdit ? 'Concluir' : 'Editar');
+    btn.setAttribute('aria-label', willEdit ? 'Concluir' : 'Editar');
+
+    if (!willEdit) save();   // só salva ao concluir
+    return;
+  }
+
+  // listas (missões etc.)
+  const li = e.target.closest('li');
+  if (li) {
+    const el = li.querySelector('.text');
+    const willEdit = el.getAttribute('contenteditable') !== 'true';
+    el.setAttribute('contenteditable', willEdit ? 'true' : 'false');
+
+    btn.innerHTML = willEdit
+      ? '<i class="fa-solid fa-check"></i>'
+      : '<i class="fa-solid fa-pen-to-square"></i>';
+    btn.setAttribute('title', willEdit ? 'Concluir' : 'Editar');
+    btn.setAttribute('aria-label', willEdit ? 'Concluir' : 'Editar');
+
+    if (!willEdit) save();
+    return;
+  }
+  // === Socket.IO: conectar e sincronizar do servidor ===
+}
+
+});
+  
+// --- Busca genérica por seção (input[type="search"][data-table]) ---
+(function(){
+  function norm(s){ try{ return (s||'').toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu,''); }catch(e){ return (s||'').toLowerCase(); } }
+  function filterTable(tableId, query){
+    var tbl = document.getElementById(tableId);
+    if(!tbl) return;
+    var q = norm(query||'');
+    var rows = tbl.querySelectorAll('tbody tr');
+    if(!q){ rows.forEach(r => r.style.display=''); return; }
+    rows.forEach(function(r){
+      var text = norm(r.innerText || '');
+      r.style.display = text.indexOf(q) !== -1 ? '' : 'none';
+    });
+  }
+  document.addEventListener('input', function(e){
+    var inp = e.target.closest('input[type="search"][data-table]');
+    if(!inp) return;
+    var tableId = inp.getAttribute('data-table');
+    filterTable(tableId, inp.value);
+  });
+  // Também reagir ao 'search' (quando clica no X do campo)
+  document.addEventListener('search', function(e){
+    var inp = e.target.closest('input[type="search"][data-table]');
+    if(!inp) return;
+    var tableId = inp.getAttribute('data-table');
+    filterTable(tableId, inp.value);
+  });
+})();
+</script>
+<script>
+// --- Anti-flash: classe 'scrolling' durante a rolagem ---
+(function(){
+  let _t;
+  window.addEventListener('scroll', () => {
+    document.documentElement.classList.add('scrolling');
+    if (_t) clearTimeout(_t);
+    _t = setTimeout(() => document.documentElement.classList.remove('scrolling'), 140);
+  }, {passive:true});
+})();
+
+// Questline interactions
+document.addEventListener('click', (e) => {
+  const t = e.target;
+  const toggle = t.closest('.quest-toggle');
+  if (toggle){
+    const row = toggle.closest('.quest-row');
+    const box = row?.querySelector('.quest-steps');
+    if (box){
+      box.hidden = !box.hidden;
+      toggle.innerHTML = box.hidden ? '<i class="fa-solid fa-caret-down"></i>' : '<i class="fa-solid fa-caret-up"></i>';
+    }
+    return;
+  }
+  const add = t.closest('.add-step');
+  if (add){
+    const row = add.closest('.quest-row');
+    const ul = row.querySelector('.steps');
+    const inp = row.querySelector('.step-input');
+    const val = (inp.value || '').trim();
+    if (val){
+      const li = document.createElement('li');
+      li.innerHTML = '<label><input type="checkbox" class="step-check"> <span class="step-text"></span></label>';
+      li.querySelector('.step-text').textContent = val;
+      ul.appendChild(li);
+      inp.value = '';
+      if (typeof save === 'function') save();
+    }
+    return;
+  }
+});
+document.addEventListener('change', (e) => {
+  if (e.target.classList.contains('step-check')){
+    const li = e.target.closest('li');
+    li.classList.toggle('done', e.target.checked);
+    if (typeof save === 'function') save();
+  }
+});
+
+</script>
+
+<script>
+// === Gallery Module (safe) ===
+(() => {
+  let CURRENT_ALBUM = 'default';
+  let galleryReady = false;
+
+  async function ping(){
+    try{ const r = await fetch('/api/health/images'); return r.ok; }catch{ return false; }
+  }
+  async function fetchJSON(url, opts={}){
+    const res = await fetch(url, { headers:{'Content-Type':'application/json'}, ...opts });
+    if(!res.ok) throw new Error(await res.text().catch(()=>res.statusText));
+    return res.json();
+  }
+  
+async function loadAlbums(selected){
+  const albums = await fetchJSON('/api/albums');
+  const sel = document.getElementById('albumSelect');
+  if(!sel) return;
+  sel.innerHTML = '';
+
+  // popula opções vindas do servidor
+  albums.forEach(a => {
+    const opt = document.createElement('option');
+    opt.value = a.name;
+    opt.textContent = `${a.name} (${a.count})`;
+    if (selected && selected === a.name) opt.selected = true;
+    sel.appendChild(opt);
+  });
+
+  // se 'selected' ainda não existe no backend (acabou de criar)
+  if (selected && !albums.find(a => a.name === selected)) {
+    const opt = document.createElement('option');
+    opt.value = selected;
+    opt.textContent = `${selected} (0)`;
+    opt.selected = true;
+    sel.appendChild(opt);
+  }
+
+  // garante sempre uma seleção válida
+  if (!sel.value && albums.length) {
+    sel.value = albums[0].name;
+  }
+  CURRENT_ALBUM = sel.value || 'default';
+}
+async function listImages(){
+    const q = (document.querySelector('[data-gallery-search]')?.value || '').toLowerCase();
+    const grid = document.getElementById('galleryGrid');
+    const { album, items } = await fetchJSON(`/api/images?album=${encodeURIComponent(CURRENT_ALBUM)}`);
+    const frag = document.createDocumentFragment();
+    items.filter(it => !q || it.name.toLowerCase().includes(q) || (it.caption||'').toLowerCase().includes(q))
+      .forEach(it => {
+        const el = document.createElement('div'); el.className='gallery-item'; el.draggable = true;
+        el.dataset.name = it.name; el.dataset.album = album;
+        el.innerHTML = `
+          <img src="${it.thumb}" alt="${it.name}" loading="lazy">
+          <div class="actions">
+            <button class="btn icon-btn" data-view="${it.url}" title="Ver"><i class="fa-solid fa-eye"></i></button>
+            <button class="btn icon-btn danger" data-del="${it.name}" title="Excluir"><i class="fa-solid fa-trash"></i></button>
+          </div>
+          <div class="meta">
+            <div class="caption" contenteditable="true" spellcheck="false">${(it.caption||'')}</div>
+            <span class="badge">${album}</span>
+          </div>`;
+        frag.appendChild(el);
+      });
+    grid.innerHTML=''; grid.appendChild(frag);
+  }
+  function openLightbox(url){
+    let lb = document.getElementById('lightbox'); 
+    if(!lb){ lb = document.createElement('div'); lb.id='lightbox'; lb.className='lightbox'; lb.innerHTML='<img><div class="btn icon-btn" style="position:fixed;top:16px;right:16px"><i class="fa-solid fa-xmark"></i></div>'; document.body.appendChild(lb); }
+    lb.querySelector('img').src = url;
+    lb.classList.add('open');
+    lb.onclick = () => lb.classList.remove('open');
+  }
+
+  // Delegated events – only when ready
+  document.addEventListener('click', async (e) => {
+    if (!galleryReady) return;
+    const t = e.target;
+    const view = t.closest?.('[data-view]'); if(view){ openLightbox(view.getAttribute('data-view')); return; }
+    const del  = t.closest?.('[data-del]'); if(del){
+      if(!confirm('Excluir esta imagem?')) return;
+      const name = del.getAttribute('data-del');
+      const res = await fetch(`/api/images/${encodeURIComponent(CURRENT_ALBUM)}/${encodeURIComponent(name)}`, { method:'DELETE' });
+      if(res.ok) listImages();
+      return;
+    }
+    if(t.matches?.('[data-gallery-upload]')){ document.getElementById('galleryInput')?.click(); return; }
+    if(t.matches?.('[data-gallery-refresh]')){ listImages(); return; }
+    if(t.id === 'newAlbumBtn'){
+      const name = prompt('Nome do novo álbum (ex.: "sessao-12"):');
+      if(!name) return;
+      await fetchJSON('/api/albums', { method:'POST', body: JSON.stringify({ name }) });
+      await loadAlbums(name); await listImages(); return;
+    }
+    if(t.id === 'deleteAlbumBtn'){
+      if (CURRENT_ALBUM === 'default') { alert('O álbum padrão não pode ser excluído.'); return; }
+      if(!confirm(`Excluir o álbum "${CURRENT_ALBUM}" e todas as suas imagens?`)) return;
+      try{
+        const res = await fetch(`/api/albums/${encodeURIComponent(CURRENT_ALBUM)}`, { method:'DELETE' });
+        if(!res.ok){
+          const txt = await res.text().catch(()=>res.statusText);
+          alert('Falha ao excluir álbum: ' + txt);
+          return;
+        }
+        await loadAlbums();         // reposiciona a seleção para o primeiro disponível
+        await listImages();
+      }catch(err){
+        alert('Erro ao excluir álbum: ' + err.message);
+      }
+      return;
+    }
+    
+  });
+  document.addEventListener('change', async (e) => {
+    if (!galleryReady) return;
+    if(e.target?.id === 'galleryInput'){
+      const fd = new FormData();
+      fd.append('album', CURRENT_ALBUM);
+      Array.from(e.target.files || []).forEach(f => fd.append('images', f));
+      const res = await fetch('/api/upload-images', { method:'POST', body: fd });
+      if(res.ok) { await listImages(); e.target.value=''; } else alert('Falha no upload');
+    }
+    if(e.target?.id === 'albumSelect'){ CURRENT_ALBUM = e.target.value || 'default'; await listImages(); }
+  });
+  document.addEventListener('input', (e) => {
+    if (!galleryReady) return;
+    if(e.target?.matches?.('[data-gallery-search]')) listImages();
+  });
+  // Captions
+  document.addEventListener('keydown', async (e) => {
+    if (!galleryReady) return;
+    if (e.target?.classList?.contains('caption') && e.key === 'Enter'){ e.preventDefault(); e.target.blur(); }
+  });
+  document.addEventListener('blur', async (e) => {
+    if (!galleryReady) return;
+    if (e.target?.classList?.contains('caption')){
+      const item = e.target.closest('.gallery-item');
+      const name = item?.dataset?.name, album = item?.dataset?.album;
+      try{ await fetchJSON(`/api/images/${encodeURIComponent(album)}/${encodeURIComponent(name)}`, { method:'PATCH', body: JSON.stringify({ caption: e.target.textContent.trim() }) }); }
+      catch(err){ console.error(err); }
+    }
+  }, true);
+
+  // Drag & drop ordering
+  document.getElementById('galleryGrid')?.addEventListener('dragover', (e) => {
+    if (!galleryReady) return;
+    e.preventDefault();
+    const grid = e.currentTarget;
+    const dragging = grid.querySelector('.gallery-item.dragging');
+    const after = Array.from(grid.querySelectorAll('.gallery-item:not(.dragging)'))
+      .find(el => { const r = el.getBoundingClientRect(); return e.clientY < r.top + r.height/2; });
+    if (!dragging) return;
+    if (after) grid.insertBefore(dragging, after); else grid.appendChild(dragging);
+  });
+  document.getElementById('galleryGrid')?.addEventListener('drop', async (e) => {
+    if (!galleryReady) return;
+    const grid = e.currentTarget;
+    const names = Array.from(grid.querySelectorAll('.gallery-item')).map(x => x.dataset.name);
+    try{ await fetchJSON(`/api/albums/${encodeURIComponent(CURRENT_ALBUM)}/order`, { method:'PUT', body: JSON.stringify({ order: names }) }); }
+    catch(err){ console.error(err); }
+  });
+  document.addEventListener('dragstart', (e) => {
+    if (!galleryReady) return;
+    const it = e.target.closest?.('.gallery-item'); if(!it) return;
+    it.classList.add('dragging'); e.dataTransfer.effectAllowed='move';
+  });
+  document.addEventListener('dragend', (e) => {
+    if (!galleryReady) return;
+    const it = e.target.closest?.('.gallery-item'); if(it) it.classList.remove('dragging');
+  });
+
+  // Init
+  window.addEventListener('DOMContentLoaded', async () => {
+    try{
+      const ok = await ping();
+      if(!ok) return; // keep hidden if backend not present
+      await loadAlbums();
+      await listImages();
+      document.getElementById('galeria-section')?.removeAttribute('hidden');
+      galleryReady = true;
+    }catch(e){ console.warn('Galeria indisponível:', e); }
+  });
+})();
+
+
+
+// --- Save on hide/close (best-effort) ---
+(function(){
+  function payloadBlob(){
+    try{
+      const data = (typeof buildState === 'function') ? buildState() : null;
+      const json = JSON.stringify(data||{});
+      return new Blob([json], { type: 'application/json' });
+    }catch{ return null; }
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') {
+      try{
+        const blob = payloadBlob();
+        if (blob && 'sendBeacon' in navigator){
+          navigator.sendBeacon('/api/campaign', blob);
+          localStorage.setItem(LS_LASTSAVED, String(Date.now()));
+        }
+      }catch{}
+    }
+  });
+  window.addEventListener('beforeunload', () => {
+    try{
+      const blob = payloadBlob();
+      if (blob && 'sendBeacon' in navigator){
+        navigator.sendBeacon('/api/campaign', blob);
+        localStorage.setItem(LS_LASTSAVED, String(Date.now()));
+      }
+    }catch{}
+  });
+  // tenta reenviar qualquer outbox pendente na carga
+  window.addEventListener('DOMContentLoaded', () => { try{ flushOutbox(); }catch{} });
+})();
+</script>
+
+<!-- === JUKEBOX MODAL ================================================ -->
+<div id="jukeboxModal" class="modal" hidden>
+  <div class="modal-dialog">
+    <header class="modal-header">
+      <h3><i class="fa-solid fa-headphones"></i> Trilha Sonora (Jukebox)</h3>
+      <div class="spacer"></div>
+
+Abrir em nova aba</button>
+</header>
+
+    <div class="modal-body">
+      <div class="jb-controls">
+</button>
+</button>
+</button>
+
+        <label class="vol">
+          <i class="fa-solid fa-volume-high"></i>
+<div class="spacer"></div>
+</div>
+
+      <div class="jb-add">
+Adicionar</button>
+      </div>
+
+</div>
+  </div>
+</div>
+
+
+
+
+
+<script>
+(function(){
+  const JB = { unlocked:false, queue:[], index:-1, playing:false, volume:0.8, ytReady:false, yt:null }
+
+
+window.JB = JB;
+function jbPersist(){
+  if (window.__jbSuppressSync) return;
+  try{
+    if (typeof saveCampaignDebounced === 'function') {
+      saveCampaignDebounced(buildState());
+    } else if (typeof save === 'function') {
+      save();
+    }
+    if (window.socket && socket.connected) {
+      socket.emit('jukebox:cmd', {
+        type: 'queue',
+        data: {
+          queue: JB.queue,
+          index: JB.index,
+          playing: JB.playing,
+          volume: JB.volume
+        }
+      });
+    }
+  }catch(e){ console.warn('[jukebox] persist fail', e); }
+}
+
+// >>> NOVO: observar mudanças na fila/índice/playing/volume
+if (window.JB && !window.__jbProxyApplied){
+  window.__jbProxyApplied = true;
+
+  const _arr = JB.queue || [];
+  JB.queue = new Proxy(_arr, {
+    set(target, prop, value){
+      const ok = Reflect.set(target, prop, value);
+      if (prop == 'length' || !Number.isNaN(Number(prop))){
+        jbPersist();
+      }
+      return ok;
+    }
+  });
+
+  let _index = Number.isInteger(JB.index) ? JB.index : -1;
+  Object.defineProperty(JB, 'index', { get(){ return _index; }, set(v){ _index = Number(v); jbPersist(); } });
+  let _playing = !!JB.playing;
+  Object.defineProperty(JB, 'playing', { get(){ return _playing; }, set(v){ _playing = !!v; jbPersist(); } });
+  let _volume = typeof JB.volume === 'number' ? JB.volume : 0.8;
+  Object.defineProperty(JB, 'volume', { get(){ return _volume; }, set(v){ _volume = Number(v); jbPersist(); } });
+}
+
+;
+  const $ = (s)=>document.querySelector(s);
+  const audio = $('#jbAudio');
+  const ytDiv = $('#jbYT');
+  const modal = $('#jukeboxModal');
+
+  function isYt(u){
+    try{
+      const url = new URL(u);
+      const host = url.hostname.replace(/^www\./,'');
+      if (host==='youtu.be') return url.pathname.slice(1);
+      if (['youtube.com','m.youtube.com','music.youtube.com','youtube-nocookie.com'].includes(host)){
+        const v = url.searchParams.get('v');
+        if (v) return v;
+        const m = url.pathname.match(/\/shorts\/([\w-]{6,})/); if (m) return m[1];
+      }
+    }catch(e){}
+    return null;
+  }
+
+  function render(){
+    const ul = $('#jbList'); if(!ul) return; ul.innerHTML='';
+    JB.queue.forEach((it,i)=>{
+      const li=document.createElement('li');
+      li.className='jb-item'+(i===JB.index?' playing':'');
+      const label = it.title || (it.kind==='yt' ? ('YouTube · '+it.id) : it.url);
+      li.innerHTML = '<span class="badge">#'+String(i+1).padStart(2,'0')+'</span>' +
+                     '<span class="title">'+escapeHtml(label)+'</span>' +
+                     '<div class="row-actions">' +
+                       '<button class="btn icon-btn" data-act="play" data-i="'+i+'" title="Tocar"><i class="fa-solid fa-play"></i></button>' +
+                       '<button class="btn icon-btn" data-act="up" data-i="'+i+'" title="Subir"><i class="fa-solid fa-arrow-up"></i></button>' +
+                       '<button class="btn icon-btn" data-act="down" data-i="'+i+'" title="Descer"><i class="fa-solid fa-arrow-down"></i></button>' +
+                       '<button class="btn icon-btn danger" data-act="del" data-i="'+i+'" title="Remover"><i class="fa-solid fa-trash"></i></button>' +
+                     '</div>';
+      ul.appendChild(li);
+    });
+    const playIcon = $('#jbPlay i'); if(playIcon){ playIcon.classList.toggle('fa-pause', JB.playing); playIcon.classList.toggle('fa-play', !JB.playing); }
+  }
+  function escapeHtml(str){ return String(str).replace(/[&<>"']/g, s=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[s])); }
+
+  function loadYTAPI(cb){
+    if(JB.ytReady) return cb&&cb();
+    const s = document.createElement('script'); s.src='https://www.youtube.com/iframe_api'; s.async=true;
+    window.onYouTubeIframeAPIReady = ()=>{ JB.ytReady=true; cb&&cb(); };
+    document.head.appendChild(s);
+  }
+  function ensureYT(){
+    if(JB.yt) return;
+    JB.yt = new YT.Player('jbYT',{height:'360',width:'640',videoId:'',playerVars:{playsinline:1,controls:1},
+      events:{ onStateChange:(e)=>{ if(e.data===YT.PlayerState.ENDED) next(); } }
+    });
+  }
+  function useAudio(){ ytDiv.style.display='none'; audio.style.display='block'; }
+  function useYT(){ audio.style.display='none'; ytDiv.style.display='block'; }
+  function loadTrack(i){
+    if(i<0||i>=JB.queue.length) return;
+    JB.index=i; const it=JB.queue[i];
+    if(it.kind==='yt'){ loadYTAPI(()=>{ ensureYT(); useYT(); JB.yt.loadVideoById({videoId:it.id,suggestedQuality:'small'}); JB.yt.setVolume(Math.round(JB.volume*100)); if(JB.playing&&JB.unlocked) JB.yt.playVideo(); }); }
+    else { useAudio(); audio.src=it.url; audio.currentTime=0; audio.volume=JB.volume; if(JB.playing&&JB.unlocked) audio.play().catch(()=>{}); }
+    render();
+  }
+  function play(){ if(JB.index<0 && JB.queue.length) loadTrack(0); JB.playing=true; const it=JB.queue[JB.index]; if(it&&it.kind==='yt'&&JB.ytReady&&JB.yt) JB.yt.playVideo(); else audio.play().catch(()=>{}); render(); }
+  function pause(){ JB.playing=false; const it=JB.queue[JB.index]; if(it&&it.kind==='yt'&&JB.ytReady&&JB.yt) JB.yt.pauseVideo(); else audio.pause(); render(); }
+  function next(){ if(!JB.queue.length) return; loadTrack((JB.index+1)%JB.queue.length); if(JB.playing) play(); }
+  function prev(){ if(!JB.queue.length) return; loadTrack((JB.index-1+JB.queue.length)%JB.queue.length); if(JB.playing) play(); }
+  function setVolume(v){ JB.volume=v; audio.volume=v; if(JB.ytReady&&JB.yt) JB.yt.setVolume(Math.round(v*100)); }
+  audio.addEventListener('ended', ()=>next());
+
+  function addTrack(url,title){ if(!url) return; const id=isYt(url); if(id) JB.queue.push({kind:'yt',id,title}); else JB.queue.push({kind:'url',url,title}); persistAndBroadcast(); }
+  function delTrack(i){ JB.queue.splice(i,1); if(JB.index>=JB.queue.length) JB.index=JB.queue.length-1; persistAndBroadcast(); }
+  function moveTrack(i,dir){ const j=i+dir; if(j<0||j>=JB.queue.length) return; const [t]=JB.queue.splice(i,1); JB.queue.splice(j,0,t); if(JB.index===i) JB.index=j; persistAndBroadcast(); }
+
+  function persistAndBroadcast(){
+  render();
+  try{
+    // Persist state to server (debounced if available)
+    if (typeof saveCampaignDebounced === 'function') {
+      saveCampaignDebounced(buildState());
+    } else if (typeof save === 'function') {
+      save();
+    }
+    // Realtime snapshot to connected clients
+    if (socket && socket.connected) {
+      socket.emit('jukebox:cmd', {
+        type: 'queue',
+        data: {
+          queue: JB.queue,
+          index: JB.index,
+          playing: JB.playing,
+          volume: JB.volume
+        }
+      });
+    }
+  }catch(e){ console.warn('[jukebox] persistAndBroadcast failed', e); }
+}
+
+  document.addEventListener('click',(e)=>{
+    const t = e.target.closest('#openJukebox,#jbClose,#jbAdd,[data-act],[id^=jb]'); if(!t) return;
+    if(t.id==='openJukebox'){ modal.hidden=false; return; }
+    if(t.id==='jbClose'){ modal.hidden=true; return; }
+    if(t.id==='jbNewTab'){ window.open(location.href+'#jukebox','_blank'); return; }
+    if(t.id==='jbUnlockBtn'){ try{ audio.play().then(()=>audio.pause()).catch(()=>{});}catch(e){} JB.unlocked=true; t.disabled=true; t.textContent='Áudio habilitado'; return; }
+    if(t.id==='jbAdd'){ addTrack($('#jbUrl').value.trim(), $('#jbTitle').value.trim()); $('#jbUrl').value=''; $('#jbTitle').value=''; return; }
+    if(t.dataset.act==='play'){ const i=+t.dataset.i; loadTrack(i); JB.unlocked && play(); try{ socket.emit('jukebox:cmd',{type:'play',index:i}); }catch(e){} return; }
+    if(t.dataset.act==='del'){ delTrack(+t.dataset.i); return; }
+    if(t.dataset.act==='up'){ moveTrack(+t.dataset.i,-1); return; }
+    if(t.dataset.act==='down'){ moveTrack(+t.dataset.i,1); return; }
+    if(t.id==='jbPrev'){ prev(); try{ socket.emit('jukebox:cmd',{type:'prev'});}catch(e){} return; }
+    if(t.id==='jbPlay'){ (JB.playing?pause:play)(); try{ socket.emit('jukebox:cmd',{type:JB.playing?'play':'pause',index:JB.index}); }catch(e){} return; }
+    if(t.id==='jbNext'){ next(); try{ socket.emit('jukebox:cmd',{type:'next'});}catch(e){} return; }
+  });
+  $('#jbVol') && $('#jbVol').addEventListener('input', (e)=>{ setVolume(+e.target.value); try{ socket.emit('jukebox:cmd',{type:'volume',volume:JB.volume}); }catch(e){} });
+
+  if(socket){
+    socket.on('jukebox:cmd', (msg)=>{
+      if(!msg) return;
+      switch(msg.type){
+        case 'play': if (typeof msg.index==='number' && msg.index!==JB.index) loadTrack(msg.index); if(JB.unlocked) play(); break;
+        case 'pause': pause(); break;
+        case 'next': next(); break;
+        case 'prev': prev(); break;
+        case 'volume': if(typeof msg.volume==='number') setVolume(msg.volume); break;
+        case 'queue': 
+      if (msg.data && window.JB) {
+        window.__jbSuppressSync = true;
+        try{
+          JB.queue   = Array.isArray(msg.data.queue) ? msg.data.queue : JB.queue;
+          JB.index   = Number.isInteger(msg.data.index) ? msg.data.index : JB.index;
+          JB.playing = !!msg.data.playing;
+          if (typeof msg.data.volume === 'number') {
+            JB.volume = msg.data.volume;
+            try{ document.getElementById('jbVol').value = String(JB.volume); }catch{}
+            if (typeof setVolume === 'function') setVolume(JB.volume);
+          }
+          if (typeof render === 'function') render();
+        } finally {
+          setTimeout(() => (window.__jbSuppressSync = false), 50);
+        }
+      }
+render(); break;
+      }
+    });
+  }
+
+  const _oldBuild = window.buildState || (function(){ return {}; });
+  window.buildState = function(){ const s=_oldBuild(); s.jukebox={queue:JB.queue,index:JB.index,playing:JB.playing,volume:JB.volume}; return s; };
+  const _oldApply = window.applyState || (function(){});
+  window.applyState = function(data){
+    _oldApply(data);
+    if(!data || !data.jukebox) return;
+    JB.queue   = Array.isArray(data.jukebox.queue) ? data.jukebox.queue : (JB.queue || []);
+    JB.index   = Number.isInteger(data.jukebox.index) ? data.jukebox.index : (JB.index ?? -1);
+    JB.playing = !!data.jukebox.playing;
+    if (typeof data.jukebox.volume === 'number') {
+      JB.volume = data.jukebox.volume;
+      try { document.getElementById('jbVol').value = String(JB.volume); } catch{}
+      if (typeof setVolume === 'function') setVolume(JB.volume);
+    }
+    if (typeof render === 'function') render();
+  };
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    if(!document.getElementById('openJukebox')){
+      const btn=document.createElement('button'); btn.id='openJukebox'; btn.className='btn';
+      btn.innerHTML='<i class="fa-solid fa-headphones"></i> Trilha Sonora'; (document.querySelector('header .toolbar')||document.body).appendChild(btn);
+    }
+    audio && (audio.volume=JB.volume);
+  });
+})();
+  (function(){
+    // ===== Helpers / referências =================================================
+    const JB = window.JB || (window.JB = {});
+    const socket = window.socket || window.io?.();
+    const $ = (sel) => document.querySelector(sel);
+  
+    // Tenta inferir elementos padrão
+    const audio = $("#jbAudio") || JB.audio || JB.audioEl;
+    const getYT = () => JB.yt;   // player do YouTube (se carregado)
+    const ytReady = () => !!(JB.ytReady || (getYT() && getYT().playVideo));
+  
+    // Estado padrão se não existir
+    if (typeof JB.playing !== "boolean") JB.playing = false;
+    if (!Array.isArray(JB.queue)) JB.queue = [];
+    if (typeof JB.index !== "number") JB.index = -1;
+    if (typeof JB.unlocked !== "boolean") JB.unlocked = false;
+  
+    // ===== Guardas de UX =========================================================
+    function hasTrack(){
+      return Array.isArray(JB.queue) && JB.queue.length > 0;
+    }
+    function ensureTrackLoaded(idx){
+      if (!hasTrack()) return false;
+      if (idx == null || idx < 0) idx = (JB.index >= 0 ? JB.index : 0);
+      // Se o front já tem uma função de loadTrack, use-a
+      if (typeof JB.loadTrack === "function") {
+        if (JB.index !== idx) JB.loadTrack(idx);
+        else JB.loadTrack(idx, { forceReload:false });
+        return true;
+      }
+      // fallback: apenas define index se não houver player dedicado
+      JB.index = Math.max(0, Math.min(idx, JB.queue.length - 1));
+      return true;
+    }
+  
+    // ===== Play/Pause seguros ====================================================
+    async function safePlayElement(el){
+      try { await el.play(); return true; }
+      catch { return false; }
+    }
+  
+    async function doPlayCurrent(){
+      // Se não há faixa, não muda estado e sai
+      if (!hasTrack()){ JB.playing = false; renderSafe(); return false; }
+  
+      // Garante faixa carregada
+      ensureTrackLoaded(JB.index);
+  
+      // YouTube tem prioridade quando o item for YT
+      const it = JB.queue[JB.index];
+      if (it && it.kind === "yt" && ytReady()){
+        try {
+          getYT().playVideo();
+          return true;
+        } catch(e) {
+          return false;
+        }
+      }
+  
+      // Fallback: elemento <audio>
+      if (audio) return await safePlayElement(audio);
+      return false;
+    }
+  
+    async function play(){
+      // Marca intenção de tocar (para sincronizar UI e retry pós-unlock)
+      JB.playing = true;
+  
+      // Se estiver travado, não tenta tocar agora: aguarda destravar
+      if (!JB.unlocked){
+        renderSafe();
+        return false;
+      }
+  
+      const ok = await doPlayCurrent();
+      if (!ok){
+        // Falhou (autoplay/bloqueio) -> reverte estado para não deixar "tocando fantasma"
+        JB.playing = false;
+        renderSafe();
+        hintUnlock(); // mostra uma dica visual se tiver hook
+        return false;
+      }
+      renderSafe();
+      return true;
+    }
+  
+    function pause(){
+      JB.playing = false;
+      try {
+        if (ytReady()) getYT().pauseVideo();
+        if (audio && !audio.paused) audio.pause();
+      } catch {}
+      renderSafe();
+    }
+  
+    // Exponibiliza overrides (sem quebrar quem chama JB.play/JB.pause)
+    JB.play = play;
+    JB.pause = pause;
+  
+    // ===== Destravar áudio (botão) ==============================================
+    const unlockBtn = $("#jbUnlockBtn");
+    if (unlockBtn && !unlockBtn.dataset._patched){
+      unlockBtn.dataset._patched = "1";
+      unlockBtn.addEventListener("click", async (ev) => {
+        // Tenta "destravar" com gesto do usuário
+        try {
+          if (audio){
+            await audio.play().catch(()=>{});
+            audio.pause();
+            audio.currentTime = Math.max(0, audio.currentTime - 0.01); // nudge leve
+          }
+        } catch {}
+        JB.unlocked = true;
+  
+        // Também dá um "ping" no YT em gesto do usuário (iOS/Safari curtem isso)
+        try { if (ytReady()) { getYT().playVideo(); getYT().pauseVideo?.(); } } catch {}
+  
+        // Retry automático se havia intenção de tocar
+        if (JB.playing) { await play(); }
+  
+        // Feedback simples no botão (opcional)
+        unlockBtn.disabled = true;
+        unlockBtn.textContent = "Áudio habilitado";
+      });
+    }
+  
+    // ===== Socket: sincronização de comandos remotos ============================
+    function onJukeboxCmd(msg){
+      if (!msg || typeof msg !== "object") return;
+  
+      if (msg.type === "play"){
+        // Se veio com índice novo, carrega a faixa desejada
+        if (typeof msg.index === "number") ensureTrackLoaded(msg.index);
+        JB.playing = true;               // reflete a intenção remota imediatamente
+        if (JB.unlocked) { play(); }     // tenta tocar se já estiver destravado
+        else { renderSafe(); }           // apenas atualiza UI (retry virá no unlock)
+        return;
+      }
+  
+      if (msg.type === "pause"){
+        JB.playing = false;
+        pause();
+        return;
+      }
+  
+      if (msg.type === "next" || msg.type === "prev"){
+        // Mantém compat com tua navegação atual
+        if (typeof JB.next === "function" && msg.type === "next") JB.next();
+        if (typeof JB.prev === "function" && msg.type === "prev") JB.prev();
+        if (JB.playing && JB.unlocked) play();
+        else renderSafe();
+        return;
+      }
+  
+      if (msg.type === "volume" && typeof msg.volume === "number"){
+        if (audio) audio.volume = Math.min(1, Math.max(0, msg.volume));
+        if (typeof JB.volume === "number") JB.volume = Math.min(1, Math.max(0, msg.volume));
+        renderSafe();
+        return;
+      }
+  
+      // Snapshots/queue continuam como no teu front (nenhuma mudança aqui)
+    }
+  
+    // Garante que só haja um handler ativo
+    if (socket?.on){
+      try { socket.off?.("jukebox:cmd", onJukeboxCmd); } catch {}
+      socket.on("jukebox:cmd", onJukeboxCmd);
+    }
+  
+    // ===== UI helpers ============================================================
+    function hintUnlock(){
+      // Se existir um espaço para dica, marca uma classe
+      const hint = document.getElementById("jbSyncHint");
+      hint?.classList?.add("warn");
+    }
+    function renderSafe(){
+      // Se teu app já tem uma função global de render, usa;
+      // do contrário, silenciosamente segue.
+      try { typeof JB.render === "function" && JB.render(); } catch {}
+    }
+  
+  })();
+  </script>  
+
+<!-- ==== JUKEBOX PATCH v2: play/pause não reseta, começa playlist, volume não reinicia ==== -->
+<script>
+(function(){
+  const JB = window.JB || (window.JB = {});
+  const socket = window.socket || window.io?.();
+  const $ = (s)=>document.querySelector(s);
+
+  // refs
+  const audio = document.getElementById('jbAudio') || JB.audio || JB.audioEl;
+  const getYT = () => JB.yt;
+  const ytReady = () => !!(JB.ytReady || (getYT() && typeof getYT().playVideo === 'function'));
+
+  // sane defaults
+  if (!Array.isArray(JB.queue)) JB.queue = [];
+  if (typeof JB.index !== "number") JB.index = -1;
+  if (typeof JB.playing !== "boolean") JB.playing = false;
+  if (typeof JB.unlocked !== "boolean") JB.unlocked = false;
+
+  // helpers
+  function hasTrack(){ return Array.isArray(JB.queue) && JB.queue.length>0; }
+  function ensureTrackLoaded(idx){
+    if (!hasTrack()) return false;
+    if (idx == null || idx < 0) idx = (JB.index >= 0 ? JB.index : 0);
+    if (typeof JB.loadTrack === "function"){
+      if (JB.index !== idx) JB.loadTrack(idx);
+      else JB.loadTrack(idx, { forceReload:false });
+    } else {
+      JB.index = Math.max(0, Math.min(idx, JB.queue.length-1));
+    }
+    return true;
+  }
+  async function safePlayElement(el){
+    try{ await el.play(); return true; }catch{ return false; }
+  }
+  async function doPlayCurrent(){
+    if (!hasTrack()) { JB.playing=false; renderSafe(); return false; }
+    ensureTrackLoaded(JB.index);
+    const it = JB.queue[JB.index];
+    if (it && it.kind === "yt" && ytReady()){
+      try{ getYT().playVideo(); return true; }catch{ return false; }
+    }
+    if (audio) return await safePlayElement(audio);
+    return false;
+  }
+  async function play(){
+    // se não há índice ainda, inicia na primeira faixa
+    if (JB.index < 0 && hasTrack()) ensureTrackLoaded(0);
+    JB.playing = true;
+    if (!JB.unlocked){ renderSafe(); return false; }
+    const ok = await doPlayCurrent();
+    if (!ok){ JB.playing=false; renderSafe(); return false; }
+    renderSafe(); return true;
+  }
+  function pause(){
+    JB.playing = false;
+    try{ if (ytReady()) getYT().pauseVideo(); }catch{}
+    try{ if (audio && !audio.paused) audio.pause(); }catch{}
+    renderSafe();
+  }
+  JB.play = play;
+  JB.pause = pause;
+
+  function renderSafe(){ try{ typeof JB.render === 'function' && JB.render(); }catch{} }
+
+  // --- Corrige botão central Play/Pause: não envia index (evita reset); começa playlist se vazia ---
+  const playBtn = document.getElementById('jbPlay');
+  if (playBtn && !playBtn.dataset._jb_patch_v2){
+    playBtn.dataset._jb_patch_v2 = "1";
+    playBtn.addEventListener('click', async (ev) => {
+      ev.preventDefault(); ev.stopImmediatePropagation();
+      // toggle local
+      if (JB.playing) { pause(); }
+      else { await play(); }
+      // broadcast SEM index para não disparar loadTrack remoto à toa
+      try{
+        socket && socket.emit && socket.emit('jukebox:cmd', { type: JB.playing ? 'play' : 'pause' });
+      }catch{}
+    }, true); // capture para ganhar das handlers existentes
+  }
+
+  // --- Listener do socket: só troca faixa se índice for diferente ---
+  function onJukeboxCmd(msg){
+    if (!msg || typeof msg !== 'object') return;
+    if (msg.type === 'play'){
+      if (typeof msg.index === 'number' && msg.index !== JB.index){
+        ensureTrackLoaded(msg.index);
+      }
+      JB.playing = true;
+      if (JB.unlocked) play(); else renderSafe();
+      return;
+    }
+    if (msg.type === 'pause'){
+      JB.playing = false; pause(); return;
+    }
+    if (msg.type === 'next' || msg.type === 'prev'){
+      if (typeof JB.next === 'function' && msg.type === 'next') JB.next();
+      if (typeof JB.prev === 'function' && msg.type === 'prev') JB.prev();
+      if (JB.playing && JB.unlocked) play(); else renderSafe();
+      return;
+    }
+    if (msg.type === 'volume' && typeof msg.volume === 'number'){
+      // aplicar volume localmente, sem tocar/pausar
+      const v = Math.max(0, Math.min(1, msg.volume));
+      try{ if (audio) audio.volume = v; }catch{}
+      try{ JB.volume = v; }catch{}
+      renderSafe();
+      return;
+    }
+  }
+  if (socket && socket.on){
+    try{ socket.off && socket.off('jukebox:cmd', onJukeboxCmd); }catch{}
+    socket.on('jukebox:cmd', onJukeboxCmd);
+  }
+
+  // --- Volume slider: emitir sem causar restart ---
+  const vol = document.getElementById('jbVol');
+  if (vol && !vol.dataset._jb_patch_v2){
+    vol.dataset._jb_patch_v2 = "1";
+    const applyVol = (v) => {
+      v = Math.max(0, Math.min(1, Number(v)));
+      try{ if (audio) audio.volume = v; }catch{}
+      try{
+        if (ytReady() && typeof getYT().setVolume === 'function') getYT().setVolume(Math.round(v*100));
+      }catch{}
+      JB.volume = v;
+      renderSafe();
+    };
+    vol.addEventListener('input', (e)=>{
+      const v = e.target.value || e.target.valueAsNumber || e.target.getAttribute('value');
+      applyVol(v);
+      try{ socket && socket.emit && socket.emit('jukebox:cmd', { type:'volume', volume: Number(v) }); }catch{}
+      // não toca/pausa aqui
+    }, true);
+  }
+
+  // --- applyState com guardas: não reinicia ao mudar apenas volume ---
+  if (typeof window.applyState === 'function' && !window.applyState._jb_patch_v2){
+    const _old = window.applyState;
+    window.applyState = function(data){
+      _old(data);
+      if(!data || !data.jukebox) return;
+
+      const prevIndex   = JB.index;
+      const prevPlaying = JB.playing;
+
+      // atualiza dados básicos
+      JB.queue   = Array.isArray(data.jukebox.queue) ? data.jukebox.queue : (JB.queue || []);
+      JB.index   = Number.isInteger(data.jukebox.index) ? data.jukebox.index : (JB.index ?? -1);
+      JB.playing = !!data.jukebox.playing;
+
+      if (typeof data.jukebox.volume === 'number'){
+        const v = Math.max(0, Math.min(1, Number(data.jukebox.volume)));
+        JB.volume = v;
+        try{ if (audio) audio.volume = v; }catch{}
+        try{ const el = document.getElementById('jbVol'); if (el) el.value = String(v); }catch{}
+      }
+
+      // só mexe em play/load quando REALMENTE muda algo relevante
+      if (!JB.unlocked) { renderSafe(); return; }
+
+      if (JB.index !== prevIndex){
+        if (JB.index >= 0) ensureTrackLoaded(JB.index);
+        if (JB.playing) play(); else renderSafe();
+      } else if (JB.playing !== prevPlaying){
+        JB.playing ? play() : pause();
+      } else {
+        renderSafe();
+      }
+    };
+    window.applyState._jb_patch_v2 = true;
+  }
+
+})();
+</script>
+<!-- Adicione estes scripts antes do </body> -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="/jukebox.js"></script>
+</body>
+</body>
+</html>

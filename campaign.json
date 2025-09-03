@@ -1,0 +1,258 @@
+{
+  "tables": [
+    {
+      "id": "detalhes-tbl",
+      "headers": [
+        "QUEM SABE A INFO?",
+        "INFORMAÇÃO",
+        "SÍMBOLO",
+        "FACÇÃO",
+        "AÇÕES"
+      ],
+      "rows": [
+        {
+          "QUEM SABE A INFO?": "Eldrin",
+          "INFORMAÇÃO": "Cespemar se manifesta novamente, mas desta vez não como goblinóide, mas sim como changeling (muito similar ao Soren fisicamente).",
+          "SÍMBOLO": "Ring of Bhaal",
+          "FACÇÃO": "Bhaal's Cult",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "QUEM SABE A INFO?": "Eldrin",
+          "INFORMAÇÃO": "A mulher (do cervo): Tentei salvar uma pessoa e acabei ficando presa pelo poder do nosso próprio povo sem conseguir voltar para Torntrad. Obrigado por terem libertado meu espírito, tentarei chegar à forma astral. (Eldrin ouviu, mas não informou Tristan nem Soren depois – Soren sentiu a presença, mas Tristan não)",
+          "SÍMBOLO": "Cervo",
+          "FACÇÃO": "?",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "QUEM SABE A INFO?": "Eldrin",
+          "INFORMAÇÃO": "2 Zhentarim: Aquele corno! Vivem pra morrer por causa dele! / Tudo isso por causa daquele desgraçado do Marrick e seu esquema de raptar pessoas! (Eldrin ouviu, mas não informou Tristan nem Soren depois – Soren sentiu a presença, mas Tristan não)",
+          "SÍMBOLO": "Serpente Alada",
+          "FACÇÃO": "Zhentarim",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "QUEM SABE A INFO?": "Soren Tristan Eldrin",
+          "INFORMAÇÃO": "O velhote (do cervo): Tentei vir salvar alguém e acabei preso nesta floresta. Obrigado por libertarem meu espírito desta maldição. (Soren e Eldrin ouviram e Soren informou Tristan depois – Tristan sentiu a presença astral)",
+          "SÍMBOLO": "Cervo",
+          "FACÇÃO": "?",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "QUEM SABE A INFO?": "Soren Tristan Eldrin",
+          "INFORMAÇÃO": "O homem imponente (da coroa): Conseguimos seguir os Zhentarim até aqui e eliminar todos, mas ficamos presos nesse labirinto mágico. As tropas da nossa aliança conseguiram derrubar muitos Zhentarim, mas a preço alto. Espero que os demais lordes consigam pôr um fim nisso. Obrigado por libertarem meu espírito. (Soren e Eldrin ouviram e Soren informou Tristan depois – Tristan sentiu a presença)",
+          "SÍMBOLO": "Coroa",
+          "FACÇÃO": "?",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "QUEM SABE A INFO?": "Soren Tristan Eldrin",
+          "INFORMAÇÃO": "3 Zhentarim: Tudo isso por causa do maldito do Marrick. / Aquele filho da puta nos mandou pra morte! / Desgraçado, ficamos presos na floresta por culpa dele. (Tristan ouviu e informou Soren e Eldrin depois – Soren sentiu a presença astral, Eldrin não sentiu nada, nem remorso hehehe)",
+          "SÍMBOLO": "Serpente Alada",
+          "FACÇÃO": "Zhentarim",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        }
+      ]
+    },
+    {
+      "id": "lugares-tbl",
+      "headers": [
+        "LOCAL",
+        "VISITADO?",
+        "AÇÕES"
+      ],
+      "rows": [
+        {
+          "LOCAL": "Bliveholde",
+          "VISITADO?": "✔️",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "LOCAL": "Sylvaris",
+          "VISITADO?": "—",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "LOCAL": "Torntrad",
+          "VISITADO?": "—",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        }
+      ]
+    },
+    {
+      "id": "npcs-tbl",
+      "headers": [
+        "NOME",
+        "DETALHE",
+        "QUEST",
+        "LOCALIDADE",
+        "O QUE SABE?",
+        "RELEVÂNCIA",
+        "AÇÕES"
+      ],
+      "rows": [
+        {
+          "NOME": "Cedric Highmoor",
+          "DETALHE": "Bibliotecário",
+          "QUEST": "",
+          "LOCALIDADE": "Blivehold",
+          "O QUE SABE?": "Também conhecido como Cedric Allure\n- Falar para o Rei ou para a rainha que Cedric Allure enviou a gente pela Ordem da Lua (Ordem Secreta), não pode ser falada sobre para qualquer um, não apenas por ser secreta mas por que coisas ruins podem acontecer conosco.",
+          "RELEVÂNCIA": "<span class=\"tag maybe\">Talvez</span>",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "NOME": "Anabella Rosfield",
+          "DETALHE": "Rainha",
+          "QUEST": "",
+          "LOCALIDADE": "Blivehold",
+          "O QUE SABE?": "Disse que as comunicações com a rainha e o rei de Vandholde não estão boas\nAs coisas parecem estranhas em Vanhholde",
+          "RELEVÂNCIA": "<span class=\"tag maybe\">Talvez</span>",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "NOME": "Elwin Rosfield",
+          "DETALHE": "Rei",
+          "QUEST": "",
+          "LOCALIDADE": "Blivehold",
+          "O QUE SABE?": "- Artefatos de poder espalhados pelo continente (fragmentos da espada Dragon Slayer)",
+          "RELEVÂNCIA": "<span class=\"tag maybe\">Talvez</span>",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "NOME": "Rei Zola",
+          "DETALHE": "",
+          "QUEST": "",
+          "LOCALIDADE": "",
+          "O QUE SABE?": "",
+          "RELEVÂNCIA": "<span class=\"tag no\">Não</span>",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "NOME": "Rainha Zeal",
+          "DETALHE": "",
+          "QUEST": "",
+          "LOCALIDADE": "",
+          "O QUE SABE?": "",
+          "RELEVÂNCIA": "<span class=\"tag no\">Não</span>",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "NOME": "Eldric Waverun",
+          "DETALHE": "Ferreiro",
+          "QUEST": "",
+          "LOCALIDADE": "Blivehold",
+          "O QUE SABE?": "",
+          "RELEVÂNCIA": "<span class=\"tag no\">Não</span>",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "NOME": "Bartholomeu Hallwinter",
+          "DETALHE": "Guarda Real",
+          "QUEST": "",
+          "LOCALIDADE": "Blivehold",
+          "O QUE SABE?": "",
+          "RELEVÂNCIA": "<span class=\"tag no\">Não</span>",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "NOME": "Veyrik Stormfang",
+          "DETALHE": "Mercador de Armaduras",
+          "QUEST": "",
+          "LOCALIDADE": "Blivehold",
+          "O QUE SABE?": "",
+          "RELEVÂNCIA": "<span class=\"tag no\">Não</span>",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "NOME": "Cassandra Dawnspire",
+          "DETALHE": "Mercadora",
+          "QUEST": "",
+          "LOCALIDADE": "Blivehold",
+          "O QUE SABE?": "",
+          "RELEVÂNCIA": "<span class=\"tag no\">Não</span>",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "NOME": "Tristan Kendrick",
+          "DETALHE": "Arquemago",
+          "QUEST": "O Orbe Danificado",
+          "LOCALIDADE": "Sylvaris",
+          "O QUE SABE?": "",
+          "RELEVÂNCIA": "<span class=\"tag yes\">Sim</span>",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "NOME": "Lord Caldan Marrick Arrigal (a.k.a. Marrigal Caldas)",
+          "DETALHE": "",
+          "QUEST": "Tráfico Humano",
+          "LOCALIDADE": "Desconhecida",
+          "O QUE SABE?": "",
+          "RELEVÂNCIA": "<span class=\"tag maybe\">Talvez</span>",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "NOME": "Timothy Burns",
+          "DETALHE": "Bárbaro de Arena",
+          "QUEST": "",
+          "LOCALIDADE": "Blivehold",
+          "O QUE SABE?": "",
+          "RELEVÂNCIA": "<span class=\"tag maybe\">Talvez</span>",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "NOME": "Lorde Himethrol",
+          "DETALHE": "Cavaleiro do Dragão",
+          "QUEST": "",
+          "LOCALIDADE": "Blivehold",
+          "O QUE SABE?": "",
+          "RELEVÂNCIA": "<span class=\"tag maybe\">Talvez</span>",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        },
+        {
+          "NOME": "Manolo Thrembul",
+          "DETALHE": "Gladiador",
+          "QUEST": "",
+          "LOCALIDADE": "Blivehold",
+          "O QUE SABE?": "",
+          "RELEVÂNCIA": "<span class=\"tag maybe\">Talvez</span>",
+          "AÇÕES": "<div class=\"row-actions\"><button class=\"btn icon-btn\" data-row-edit=\"\" title=\"Editar\" aria-label=\"Editar\"><i class=\"fa-solid fa-pen-to-square\"></i></button><button class=\"btn danger icon-btn\" data-row-remove=\"\" title=\"Remover\" aria-label=\"Remover\"><i class=\"fa-solid fa-trash\"></i></button></div>"
+        }
+      ]
+    },
+    {
+      "id": "eventos-tbl",
+      "headers": [
+        "DATA",
+        "EVENTO",
+        "NOTAS",
+        "AÇÕES"
+      ],
+      "rows": []
+    },
+    {
+      "id": "itens-tbl",
+      "headers": [
+        "ITEM",
+        "TIPO",
+        "DONO",
+        "LOCAL",
+        "NOTAS",
+        "AÇÕES"
+      ],
+      "rows": []
+    }
+  ],
+  "lists": [
+    {
+      "id": "missoes-title",
+      "items": [
+        "Alguns dias/semanas atrás, no início do inverno, pessoas relataram aparições de mortos-vivos em torno de Sylvaris e Torntrad.",
+        "Orb Guardião entrou em colapso, apagou sua luz e trouxe escuridão para o continente."
+      ]
+    }
+  ],
+  "notes": "",
+  "session": "1",
+  "theme": "dark",
+  "updatedAt": 1756068447504
+}
